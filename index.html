@@ -37,9 +37,12 @@
     <!-- Navigation Menu -->
     <nav class="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-md border-b border-stone-200 z-50">
         <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-            <div class="flex items-center gap-3 cursor-pointer" onclick="switchView('home')">
-                <i data-lucide="compass" class="text-emerald-700 w-5 h-5"></i>
-                <span class="text-sm font-bold uppercase tracking-widest hidden sm:block">El Plano</span>
+            <div class="flex items-center gap-3 cursor-pointer group" onclick="switchView('home')">
+                <i data-lucide="compass" class="text-emerald-700 w-6 h-6 group-hover:rotate-90 transition-transform duration-700"></i>
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl font-black tracking-tighter text-emerald-700 leading-none">CEID</span>
+                    <span class="text-2xl font-light tracking-tighter text-slate-900 leading-none uppercase">Cartago</span>
+                </div>
             </div>
             <div class="flex items-center gap-1 md:gap-4 overflow-x-auto no-scrollbar scroll-smooth py-2">
                 <button onclick="switchView('home')" id="nav-btn-home" class="px-3 py-1 text-xs font-mono uppercase tracking-tighter border-b-2 border-emerald-700 text-slate-900">Inicio</button>
