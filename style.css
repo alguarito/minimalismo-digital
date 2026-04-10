@@ -1,0 +1,80 @@
+/* Base Styles */
+:root {
+    --blueprint-line: rgba(14, 165, 233, 0.1);
+    --architectural-grid: rgba(0, 0, 0, 0.05);
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Blueprint Grid Pattern */
+#blueprint-grid {
+    background-size: 40px 40px;
+    background-image: 
+        linear-gradient(to right, var(--architectural-grid) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--architectural-grid) 1px, transparent 1px);
+}
+
+/* Section Transitions */
+.reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Architectural typography tweaks */
+h1, h2, h3 {
+    letter-spacing: -0.02em;
+}
+
+.font-mono {
+    font-variant-numeric: tabular-nums;
+}
+
+/* Custom Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+    animation: fadeIn 1s ease-out forwards;
+}
+
+.fade-in {
+    animation: fadeIn 0.4s ease-out forwards;
+}
+
+/* Tab underline transition */
+.transition-all {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Hide scrollbar */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Navigation active state */
+.nav-active {
+    border-color: #047857 !important;
+    color: #1e293b !important;
+}
+
+/* Toast behavior */
+#toast.show {
+    transform: translate(-50%, -2rem);
+    opacity: 1;
+}
+
