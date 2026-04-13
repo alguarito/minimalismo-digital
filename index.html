@@ -220,34 +220,34 @@
             <!-- Lab Content: M1 -->
             <div id="lab-content-m1">
 
-                <!-- ===== BLOQUE 1: Presentación de la Sesión ===== -->
+                <!-- ===== BLOQUE 1: Presentación Embebida ===== -->
                 <section class="mb-8 md:mb-12">
-                    <a href="https://1drv.ms/p/c/959507f5d5084553/IQCVbyckQO8FQ7La0l-sDkdmAYFJq4rSRAhKwwjVDfQrQGM?e=5MuBnh&nav=eyJzSWQiOjI1NiwiY0lkIjowfQ" target="_blank" rel="noopener noreferrer"
-                       class="group block bg-gradient-to-br from-slate-800 via-slate-900 to-emerald-900 border border-slate-700 p-6 md:p-10 relative overflow-hidden rounded-sm hover:shadow-2xl hover:shadow-emerald-900/20 transition-all duration-500">
-                        <!-- Decorative grid overlay -->
-                        <div class="absolute inset-0 opacity-[0.04]" style="background-image: linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px); background-size: 30px 30px;"></div>
-                        <!-- Glow effect -->
-                        <div class="absolute -top-20 -right-20 w-60 h-60 bg-emerald-500/10 rounded-full blur-3xl group-hover:bg-emerald-500/20 transition-all duration-700"></div>
-                        <div class="relative z-10 flex flex-col md:flex-row items-start md:items-center gap-6">
-                            <div class="flex-shrink-0 bg-white/10 backdrop-blur-sm p-4 rounded-lg border border-white/10 group-hover:bg-white/15 transition-all">
-                                <i data-lucide="presentation" class="w-8 h-8 md:w-10 md:h-10 text-emerald-400"></i>
+                    <div class="bg-white border border-stone-200 overflow-hidden">
+                        <!-- Header -->
+                        <div class="bg-gradient-to-r from-slate-800 via-slate-900 to-emerald-900 px-5 md:px-8 py-4 flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <i data-lucide="presentation" class="w-5 h-5 text-emerald-400"></i>
+                                <div>
+                                    <h3 class="text-sm md:text-base font-bold text-white leading-tight">Agentes IA para la Planeación Curricular</h3>
+                                    <p class="text-[9px] md:text-[10px] font-mono text-emerald-400/70 uppercase tracking-widest mt-0.5">Presentación de Sesión I</p>
+                                </div>
                             </div>
-                            <div class="flex-grow">
-                                <div class="text-[9px] md:text-[10px] font-mono font-bold uppercase tracking-[0.3em] text-emerald-400/80 mb-2">Recurso de sesión · Presentación Interactiva</div>
-                                <h3 class="text-xl md:text-2xl font-bold text-white mb-2 leading-tight group-hover:text-emerald-100 transition-colors">Agentes IA para la Planeación Curricular</h3>
-                                <p class="text-sm text-slate-400 leading-relaxed max-w-xl">Explora la guía visual completa de esta sesión. Fundamentos, estrategias y el pipeline técnico para construir tu primer Agente IA docente.</p>
-                            </div>
-                            <div class="flex-shrink-0 flex items-center gap-2 text-emerald-400 group-hover:translate-x-1 transition-transform duration-300">
-                                <span class="text-[10px] font-mono font-bold uppercase tracking-widest hidden md:inline">Ver Presentación</span>
-                                <i data-lucide="external-link" class="w-5 h-5"></i>
-                            </div>
+                            <a href="https://1drv.ms/p/c/959507f5d5084553/IQCVbyckQO8FQ7La0l-sDkdmAYFJq4rSRAhKwwjVDfQrQGM?e=5MuBnh&nav=eyJzSWQiOjI1NiwiY0lkIjowfQ" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1.5 text-emerald-400 hover:text-emerald-300 transition-colors">
+                                <span class="text-[9px] font-mono font-bold uppercase tracking-widest hidden sm:inline">Pantalla completa</span>
+                                <i data-lucide="maximize-2" class="w-4 h-4"></i>
+                            </a>
                         </div>
-                        <!-- Mobile CTA -->
-                        <div class="md:hidden mt-4 flex items-center gap-2 text-emerald-400">
-                            <span class="text-[10px] font-mono font-bold uppercase tracking-widest">Abrir Presentación</span>
-                            <i data-lucide="external-link" class="w-4 h-4"></i>
+                        <!-- Embedded Presentation -->
+                        <div class="relative bg-stone-100" style="padding-bottom: 56.25%;">
+                            <iframe 
+                                src="https://onedrive.live.com/embed?resid=959507F5D5084553!s24276f95ef404305b2dad25fac0e4766&authkey=!AOZYIYTMUHd3sdw&em=2&wdAr=1.7777777777777777" 
+                                class="absolute inset-0 w-full h-full border-0"
+                                frameborder="0" 
+                                scrolling="no"
+                                allowfullscreen>
+                            </iframe>
                         </div>
-                    </a>
+                    </div>
                 </section>
 
                 <!-- ===== BLOQUE 2: Importancia de la Sesión ===== -->
@@ -501,32 +501,32 @@
     </footer>
 
     <!-- Mobile Bottom Navigation -->
-    <nav id="mobile-bottom-nav" class="md:hidden fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-lg border-t border-stone-200 z-50 safe-area-bottom">
+    <nav id="mobile-bottom-nav" class="md:hidden fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-lg border-t border-stone-200 z-[100] safe-area-bottom" style="touch-action: manipulation;">
         <div class="grid grid-cols-5 h-16">
-            <button onclick="switchView('home')" id="mob-nav-home" class="mob-nav-btn mob-nav-active flex flex-col items-center justify-center gap-0.5 relative">
-                <i data-lucide="home" class="w-5 h-5"></i>
-                <span class="text-[9px] font-mono font-bold uppercase tracking-tight">Inicio</span>
-                <div class="mob-nav-indicator"></div>
+            <button type="button" onclick="switchView('home')" id="mob-nav-home" class="mob-nav-btn mob-nav-active flex flex-col items-center justify-center gap-0.5 relative" style="touch-action: manipulation;">
+                <i data-lucide="home" class="w-5 h-5" style="pointer-events:none;"></i>
+                <span class="text-[9px] font-mono font-bold uppercase tracking-tight" style="pointer-events:none;">Inicio</span>
+                <div class="mob-nav-indicator" style="pointer-events:none;"></div>
             </button>
-            <button onclick="switchView('s1')" id="mob-nav-s1" class="mob-nav-btn flex flex-col items-center justify-center gap-0.5 relative">
-                <i data-lucide="flask-conical" class="w-5 h-5"></i>
-                <span class="text-[9px] font-mono font-bold uppercase tracking-tight">S. I</span>
-                <div class="mob-nav-indicator"></div>
+            <button type="button" onclick="switchView('s1')" id="mob-nav-s1" class="mob-nav-btn flex flex-col items-center justify-center gap-0.5 relative" style="touch-action: manipulation;">
+                <i data-lucide="flask-conical" class="w-5 h-5" style="pointer-events:none;"></i>
+                <span class="text-[9px] font-mono font-bold uppercase tracking-tight" style="pointer-events:none;">S. I</span>
+                <div class="mob-nav-indicator" style="pointer-events:none;"></div>
             </button>
-            <button onclick="switchView('s2')" id="mob-nav-s2" class="mob-nav-btn flex flex-col items-center justify-center gap-0.5 relative">
-                <i data-lucide="cpu" class="w-5 h-5"></i>
-                <span class="text-[9px] font-mono font-bold uppercase tracking-tight">S. II</span>
-                <div class="mob-nav-indicator"></div>
+            <button type="button" onclick="switchView('s2')" id="mob-nav-s2" class="mob-nav-btn flex flex-col items-center justify-center gap-0.5 relative" style="touch-action: manipulation;">
+                <i data-lucide="cpu" class="w-5 h-5" style="pointer-events:none;"></i>
+                <span class="text-[9px] font-mono font-bold uppercase tracking-tight" style="pointer-events:none;">S. II</span>
+                <div class="mob-nav-indicator" style="pointer-events:none;"></div>
             </button>
-            <button onclick="switchView('s3')" id="mob-nav-s3" class="mob-nav-btn flex flex-col items-center justify-center gap-0.5 relative">
-                <i data-lucide="database" class="w-5 h-5"></i>
-                <span class="text-[9px] font-mono font-bold uppercase tracking-tight">S. III</span>
-                <div class="mob-nav-indicator"></div>
+            <button type="button" onclick="switchView('s3')" id="mob-nav-s3" class="mob-nav-btn flex flex-col items-center justify-center gap-0.5 relative" style="touch-action: manipulation;">
+                <i data-lucide="database" class="w-5 h-5" style="pointer-events:none;"></i>
+                <span class="text-[9px] font-mono font-bold uppercase tracking-tight" style="pointer-events:none;">S. III</span>
+                <div class="mob-nav-indicator" style="pointer-events:none;"></div>
             </button>
-            <button onclick="switchView('s4')" id="mob-nav-s4" class="mob-nav-btn flex flex-col items-center justify-center gap-0.5 relative">
-                <i data-lucide="eye" class="w-5 h-5"></i>
-                <span class="text-[9px] font-mono font-bold uppercase tracking-tight">S. IV</span>
-                <div class="mob-nav-indicator"></div>
+            <button type="button" onclick="switchView('s4')" id="mob-nav-s4" class="mob-nav-btn flex flex-col items-center justify-center gap-0.5 relative" style="touch-action: manipulation;">
+                <i data-lucide="eye" class="w-5 h-5" style="pointer-events:none;"></i>
+                <span class="text-[9px] font-mono font-bold uppercase tracking-tight" style="pointer-events:none;">S. IV</span>
+                <div class="mob-nav-indicator" style="pointer-events:none;"></div>
             </button>
         </div>
     </nav>
