@@ -30,27 +30,28 @@
     </script>
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-stone-50 text-slate-800 font-sans selection:bg-emerald-100 selection:text-emerald-900 min-h-screen flex flex-col pt-16">
+<body class="bg-stone-50 text-slate-800 font-sans selection:bg-emerald-100 selection:text-emerald-900 min-h-screen flex flex-col pt-16 pb-20 md:pb-0">
     <!-- Grid Overlay -->
     <div class="fixed inset-0 pointer-events-none z-[-1] opacity-[0.03]" id="blueprint-grid"></div>
 
     <!-- Navigation Menu -->
     <nav class="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-md border-b border-stone-200 z-50">
-        <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-            <div class="flex items-center gap-3 cursor-pointer group" onclick="switchView('home')">
-                <i data-lucide="compass" class="text-emerald-700 w-6 h-6 group-hover:rotate-90 transition-transform duration-700"></i>
-                <div class="flex items-center gap-2">
-                    <span class="text-2xl font-black tracking-tighter text-emerald-700 leading-none">CEID</span>
-                    <span class="text-2xl font-light tracking-tighter text-slate-900 leading-none uppercase">Cartago</span>
+        <div class="max-w-6xl mx-auto px-4 md:px-6 h-16 flex items-center justify-between gap-4">
+            <div class="flex items-center gap-2 cursor-pointer group flex-shrink-0" onclick="switchView('home')">
+                <i data-lucide="compass" class="text-emerald-700 w-5 h-5 md:w-6 md:h-6 group-hover:rotate-90 transition-transform duration-700"></i>
+                <div class="flex items-center gap-1 md:gap-2">
+                    <span class="text-xl md:text-2xl font-black tracking-tighter text-emerald-700 leading-none">CEID</span>
+                    <span class="text-xl md:text-2xl font-light tracking-tighter text-slate-900 leading-none uppercase">Cartago</span>
                 </div>
             </div>
-            <div class="flex items-center gap-1 md:gap-4 overflow-x-auto no-scrollbar scroll-smooth py-2">
-                <button onclick="switchView('home')" id="nav-btn-home" class="px-3 py-1 text-xs font-mono uppercase tracking-tighter border-b-2 border-emerald-700 text-slate-900">Inicio</button>
-                <div class="w-px h-4 bg-stone-200 mx-1"></div>
-                <button onclick="switchView('s1')" id="nav-btn-s1" class="px-3 py-1 text-xs font-mono uppercase tracking-tighter border-b-2 border-transparent text-slate-500 hover:text-slate-800 transition-all">Sesión I</button>
-                <button onclick="switchView('s2')" id="nav-btn-s2" class="px-3 py-1 text-xs font-mono uppercase tracking-tighter border-b-2 border-transparent text-slate-500 hover:text-slate-800 transition-all">Sesión II</button>
-                <button onclick="switchView('s3')" id="nav-btn-s3" class="px-3 py-1 text-xs font-mono uppercase tracking-tighter border-b-2 border-transparent text-slate-500 hover:text-slate-800 transition-all">Sesión III</button>
-                <button onclick="switchView('s4')" id="nav-btn-s4" class="px-3 py-1 text-xs font-mono uppercase tracking-tighter border-b-2 border-transparent text-slate-500 hover:text-slate-800 transition-all">Sesión IV</button>
+            <!-- Desktop navigation (hidden on mobile) -->
+            <div class="hidden md:flex items-center gap-4 overflow-x-auto no-scrollbar scroll-smooth py-2">
+                <button onclick="switchView('home')" id="nav-btn-home" class="px-3 py-1 text-xs font-mono uppercase tracking-tighter border-b-2 border-emerald-700 text-slate-900 whitespace-nowrap">Inicio</button>
+                <div class="w-px h-3 bg-stone-200 mx-1 flex-shrink-0"></div>
+                <button onclick="switchView('s1')" id="nav-btn-s1" class="px-3 py-1 text-xs font-mono uppercase tracking-tighter border-b-2 border-transparent text-slate-500 hover:text-slate-800 transition-all whitespace-nowrap">Sesión I</button>
+                <button onclick="switchView('s2')" id="nav-btn-s2" class="px-3 py-1 text-xs font-mono uppercase tracking-tighter border-b-2 border-transparent text-slate-500 hover:text-slate-800 transition-all whitespace-nowrap">Sesión II</button>
+                <button onclick="switchView('s3')" id="nav-btn-s3" class="px-3 py-1 text-xs font-mono uppercase tracking-tighter border-b-2 border-transparent text-slate-500 hover:text-slate-800 transition-all whitespace-nowrap">Sesión III</button>
+                <button onclick="switchView('s4')" id="nav-btn-s4" class="px-3 py-1 text-xs font-mono uppercase tracking-tighter border-b-2 border-transparent text-slate-500 hover:text-slate-800 transition-all whitespace-nowrap">Sesión IV</button>
             </div>
         </div>
     </nav>
@@ -58,24 +59,24 @@
     <!-- Content Views -->
     <main class="flex-grow">
         <!-- View: Home (Landing) -->
-        <div id="view-home" class="max-w-6xl mx-auto px-6 py-12 md:py-24 space-y-32 block fade-in">
+        <div id="view-home" class="max-w-6xl mx-auto px-6 py-12 md:py-24 space-y-24 md:space-y-32 block fade-in">
             <!-- Hero -->
-            <header id="hero" class="animate-fade-in">
-                <div class="inline-block px-3 py-1 mb-6 border border-emerald-200 bg-emerald-50 text-emerald-700 text-[10px] font-mono uppercase tracking-widest rounded-full">
+            <header id="hero" class="animate-fade-in py-8 md:py-16">
+                <div class="inline-block px-3 py-1 mb-6 border border-emerald-200 bg-emerald-50 text-emerald-700 text-[9px] md:text-[10px] font-mono uppercase tracking-widest rounded-full">
                     Integrando la pedagogía y la Inteligencia Artificial
                 </div>
-                <h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-8 leading-tight">
+                <h1 class="text-4xl md:text-7xl font-bold tracking-tight mb-8 leading-tight">
                     El Plano del <br>
                     <span class="text-emerald-700">Minimalismo Digital</span>
                 </h1>
-                <p class="text-xl md:text-2xl text-slate-600 max-w-2xl mb-12 leading-relaxed">
+                <p class="text-lg md:text-2xl text-slate-600 max-w-2xl mb-12 leading-relaxed">
                     Construye el <span class="text-slate-900 font-medium">Aula Ubicua</span>. Deja atrás el ruido digital y convierte la tecnología en una estructura invisible que potencie la pedagogía humana.
                 </p>
                 <div class="flex flex-col sm:flex-row items-center gap-6">
-                    <button onclick="switchView('s1')" class="w-full sm:w-auto px-8 py-4 bg-slate-800 text-white font-medium rounded-sm hover:bg-slate-900 transition-all duration-300 text-center uppercase tracking-wider text-sm shadow-xl hover:shadow-slate-200">
+                    <button onclick="switchView('s1')" class="w-full sm:w-auto px-8 py-4 bg-slate-800 text-white font-medium rounded-sm hover:bg-slate-900 transition-all duration-300 text-center uppercase tracking-wider text-xs md:text-sm shadow-xl hover:shadow-slate-200">
                         Abrir Laboratorio M1
                     </button>
-                    <div class="text-[10px] font-mono text-slate-400 uppercase tracking-tighter hidden md:block border-l border-stone-200 pl-6 py-2">
+                    <div class="text-[9px] md:text-[10px] font-mono text-slate-400 uppercase tracking-tighter border-l border-stone-200 pl-6 py-2">
                         STEM+ CreaTE | CEID Cartago
                     </div>
                 </div>
@@ -125,9 +126,7 @@
             <section id="methodology" class="reveal">
                 <h2 class="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-[0.4em] mb-16 text-center">Metodología: El Pipeline de Construcción</h2>
                 <div class="relative">
-                    <!-- Connecting Line (Desktop) -->
                     <div class="hidden md:block absolute top-1/2 left-0 right-0 h-px bg-stone-200 -z-10"></div>
-                    
                     <div class="grid md:grid-cols-4 gap-8">
                         <div class="bg-stone-50 border border-stone-200 p-6 relative group hover:border-emerald-700 transition-all">
                             <div class="absolute -top-3 left-6 bg-white px-2 text-[10px] font-mono text-emerald-700 font-bold border border-stone-200">FASE 01</div>
@@ -166,7 +165,6 @@
                     </div>
                     <div class="hidden md:block text-[10px] font-mono text-stone-300">MODL-REF: ARCH-2026</div>
                 </div>
-
                 <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-stone-200 border border-stone-200 shadow-sm overflow-hidden">
                     <div onclick="switchView('s1')" class="group bg-white p-8 cursor-pointer hover:bg-emerald-50/10 transition-all flex flex-col min-h-[300px]">
                         <div class="text-[10px] font-mono text-emerald-700 font-bold opacity-30 group-hover:opacity-100 mb-8 transition-opacity">SESSION_01</div>
@@ -179,11 +177,11 @@
                     </div>
                     <div onclick="switchView('s2')" class="group bg-white p-8 cursor-pointer hover:bg-emerald-50/10 transition-all flex flex-col min-h-[300px]">
                         <div class="text-[10px] font-mono text-emerald-700 font-bold opacity-30 group-hover:opacity-100 mb-8 transition-opacity">SESSION_02</div>
-                        <h3 class="text-xl font-bold mb-4">LaTeX / GUI</h3>
-                        <p class="text-xs text-slate-500 leading-relaxed flex-grow">Diseño de interfaces educativas inmutables. Calidad editorial científica aplicada al aula diaria.</p>
+                        <h3 class="text-xl font-bold mb-4">Gemas Gemini</h3>
+                        <p class="text-xs text-slate-500 leading-relaxed flex-grow">Configuración de Gemas personalizadas. El implante técnico de tu diseño pedagógico en la nube.</p>
                         <div class="mt-8 flex items-center justify-between text-emerald-700 opacity-0 group-hover:opacity-100 transition-opacity">
-                            <span class="text-[10px] font-mono font-bold uppercase">Próximamente</span>
-                            <i data-lucide="lock" class="w-4 h-4"></i>
+                            <span class="text-[10px] font-mono font-bold uppercase">Abrir Lab</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
                         </div>
                     </div>
                     <div onclick="switchView('s3')" class="group bg-white p-8 cursor-pointer hover:bg-emerald-50/10 transition-all flex flex-col min-h-[300px]">
@@ -191,18 +189,14 @@
                         <h3 class="text-xl font-bold mb-4">Curaduría IA</h3>
                         <p class="text-xs text-slate-500 leading-relaxed flex-grow">Blindaje cognitivo del docente. Cómo evitar alucinaciones y centralizar tus fuentes de conocimiento.</p>
                         <div class="mt-8 flex items-center justify-between text-emerald-700 opacity-0 group-hover:opacity-100 transition-opacity">
-                            <span class="text-[10px] font-mono font-bold uppercase">Próximamente</span>
-                            <i data-lucide="lock" class="w-4 h-4"></i>
+                            <span class="text-[10px] font-mono font-bold uppercase">Abrir Lab</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
                         </div>
                     </div>
                     <div onclick="switchView('s4')" class="group bg-white p-8 cursor-pointer hover:bg-emerald-50/10 transition-all flex flex-col min-h-[300px]">
                         <div class="text-[10px] font-mono text-emerald-700 font-bold opacity-30 group-hover:opacity-100 mb-8 transition-opacity">SESSION_04</div>
                         <h3 class="text-xl font-bold mb-4">Ecosistemas</h3>
                         <p class="text-xs text-slate-500 leading-relaxed flex-grow">El aula ubicua. Integración final y despliegue de experiencias inmersivas para el estudiante.</p>
-                        <div class="mt-8 flex items-center justify-between text-emerald-700 opacity-0 group-hover:opacity-100 transition-opacity">
-                            <span class="text-[10px] font-mono font-bold uppercase">Próximamente</span>
-                            <i data-lucide="lock" class="w-4 h-4"></i>
-                        </div>
                     </div>
                 </div>
             </section>
@@ -223,143 +217,265 @@
                 </div>
             </div>
 
-            <!-- Introduction & Guide -->
-            <section id="lab-guide" class="mb-12">
-                <div class="bg-white border border-stone-200 p-8 md:p-12 relative overflow-hidden">
-                    <!-- Subtle background decoration -->
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-stone-50 border-l border-b border-stone-100 -mr-12 -mt-12 rotate-45"></div>
-                    
-                    <div class="relative z-10 max-w-3xl">
-                        <h3 class="text-xs font-mono font-bold text-emerald-700 uppercase tracking-widest mb-4">Manual de Instrucciones</h3>
-                        <h4 class="text-2xl font-bold text-slate-900 mb-6 leading-tight">¿Por qué este laboratorio es el primer paso?</h4>
-                        <p class="text-slate-600 leading-relaxed mb-8">
-                            El <strong>Minimalismo Digital</strong> no se trata de usar menos tecnología, sino de usar solo lo que es estructuralmente potente. Al delegar la planeación a un Agente IA alineado con la normatividad nacional e internacional, el docente recupera su tiempo creativo. Esta fase es el <strong>Plano Maestro</strong> que sostendrá toda tu práctica pedagógica durante el año.
-                        </p>
-                        
-                        <div class="grid sm:grid-cols-2 gap-8 text-sm">
-                            <div class="space-y-4">
-                                <div class="flex gap-4">
-                                    <span class="flex-shrink-0 w-6 h-6 rounded-full bg-slate-800 text-white text-[10px] flex items-center justify-center font-bold">1</span>
-                                    <div>
-                                        <p class="font-bold text-slate-800">Definir Parámetros</p>
-                                        <p class="text-slate-500 text-xs mt-1">Ingresa el área y el grado para ajustar el radio de acción de la IA.</p>
-                                    </div>
-                                </div>
-                                <div class="flex gap-4">
-                                    <span class="flex-shrink-0 w-6 h-6 rounded-full bg-slate-100 text-slate-900 text-[10px] flex items-center justify-center font-bold border border-stone-200">2</span>
-                                    <div>
-                                        <p class="font-bold text-slate-800">Alineación MEN</p>
-                                        <p class="text-slate-500 text-xs mt-1">Genera el prompt de la Fase 1 para asegurar que tu currículo cumpla con DBA y estándares nacionales.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="space-y-4">
-                                <div class="flex gap-4">
-                                    <span class="flex-shrink-0 w-6 h-6 rounded-full bg-slate-100 text-slate-900 text-[10px] flex items-center justify-center font-bold border border-stone-200">3</span>
-                                    <div>
-                                        <p class="font-bold text-slate-800">Encadenamiento de Prompts</p>
-                                        <p class="text-slate-500 text-xs mt-1">Usa los resultados de cada fase en tu chat de IA para avanzar hacia la excelencia global y teórica.</p>
-                                    </div>
-                                </div>
-                                <div class="flex gap-4">
-                                    <span class="flex-shrink-0 w-6 h-6 rounded-full bg-emerald-700 text-white text-[10px] flex items-center justify-center font-bold">4</span>
-                                    <div>
-                                        <p class="font-bold text-slate-800">Génesis del Agente</p>
-                                        <p class="text-slate-500 text-xs mt-1">Crea el "Meta-Prompt" final que transformará a la IA en tu par académico de diseño LaTeX.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Lab: M1 Implementation -->
+            <!-- Lab Content: M1 -->
             <div id="lab-content-m1">
-                <!-- Parameters -->
-                <section class="bg-white p-6 border border-stone-200 shadow-sm mb-8">
-                    <h2 class="text-sm font-bold mb-4 flex items-center text-slate-800 uppercase tracking-widest">
-                        <i data-lucide="settings-2" class="w-4 h-4 mr-2 text-emerald-600"></i>
-                        Parámetros del Currículo
-                    </h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                            <label class="block text-[11px] font-mono font-bold text-slate-500 uppercase mb-1">Asignatura / Área</label>
-                            <input type="text" id="inputAsignatura" placeholder="Ej. Ciencias Naturales, Matemáticas..." class="w-full px-4 py-2 border border-stone-200 focus:outline-none focus:border-emerald-700 transition-colors text-sm">
-                        </div>
-                        <div>
-                            <label class="block text-[11px] font-mono font-bold text-slate-500 uppercase mb-1">Grado / Nivel</label>
-                            <input type="text" id="inputGrado" placeholder="Ej. Grado 10, Educación Media..." class="w-full px-4 py-2 border border-stone-200 focus:outline-none focus:border-emerald-700 transition-colors text-sm">
+                <section class="mb-8 md:mb-12">
+                    <div class="bg-white border border-stone-200 p-6 md:p-12 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-stone-50 border-l border-b border-stone-100 -mr-12 -mt-12 rotate-45"></div>
+                        <div class="relative z-10">
+                            <h3 class="text-[10px] font-mono font-bold text-emerald-700 uppercase tracking-widest mb-4">Manual de Instrucciones</h3>
+                            <h4 class="text-xl md:text-2xl font-bold text-slate-900 mb-6 leading-tight">¿Por qué este laboratorio es el primer paso?</h4>
+                            <p class="text-sm md:text-slate-600 leading-relaxed mb-8">
+                                El <strong>Minimalismo Digital</strong> no se trata de usar menos tecnología, sino de usar solo lo que es estructuralmente potente. Al delegar la planeación a un Agente IA alineado con la normatividad nacional e internacional, el docente recupera su tiempo creativo. Esta fase es el <strong>Plano Maestro</strong> que sostendrá toda tu práctica pedagógica durante el año.
+                            </p>
+                            <div class="grid sm:grid-cols-2 gap-4 md:gap-8 text-xs md:text-sm">
+                                <div class="space-y-3 md:space-y-4">
+                                    <div class="flex gap-4 items-center">
+                                        <span class="flex-shrink-0 w-6 h-6 rounded-full bg-slate-800 text-white text-[10px] flex items-center justify-center font-bold">1</span>
+                                        <div><p class="font-bold text-slate-800">Definir Parámetros</p></div>
+                                    </div>
+                                    <div class="flex gap-4 items-center">
+                                        <span class="flex-shrink-0 w-6 h-6 rounded-full bg-slate-100 text-slate-900 text-[10px] flex items-center justify-center font-bold border border-stone-200">2</span>
+                                        <div><p class="font-bold text-slate-800">Alineación MEN</p></div>
+                                    </div>
+                                </div>
+                                <div class="space-y-3 md:space-y-4">
+                                    <div class="flex gap-4 items-center">
+                                        <span class="flex-shrink-0 w-6 h-6 rounded-full bg-slate-100 text-slate-900 text-[10px] flex items-center justify-center font-bold border border-stone-200">3</span>
+                                        <div><p class="font-bold text-slate-800">Encadenamiento</p></div>
+                                    </div>
+                                    <div class="flex gap-4 items-center">
+                                        <span class="flex-shrink-0 w-6 h-6 rounded-full bg-emerald-700 text-white text-[10px] flex items-center justify-center font-bold">4</span>
+                                        <div><p class="font-bold text-slate-800">Génesis Agente</p></div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </section>
 
-                <!-- Tabs -->
-                <div class="flex border-b border-stone-200 mb-8 overflow-x-auto no-scrollbar scroll-smooth">
-                    <button onclick="switchTab(1)" id="tab-1" class="border-emerald-700 text-emerald-700 whitespace-nowrap py-3 px-6 border-b-2 font-bold text-xs uppercase tracking-widest flex items-center">
-                        <span class="mr-2 opacity-50">01.</span> Normatividad MEN
-                    </button>
-                    <button onclick="switchTab(2)" id="tab-2" class="border-transparent text-slate-400 whitespace-nowrap py-3 px-6 border-b-2 font-bold text-xs uppercase tracking-widest flex items-center hover:text-slate-800 transition-all">
-                        <span class="mr-2 opacity-50">02.</span> Prácticas Globales
-                    </button>
-                    <button onclick="switchTab(3)" id="tab-3" class="border-transparent text-slate-400 whitespace-nowrap py-3 px-6 border-b-2 font-bold text-xs uppercase tracking-widest flex items-center hover:text-slate-800 transition-all">
-                        <span class="mr-2 opacity-50">03.</span> Referentes Teóricos
-                    </button>
-                    <button onclick="switchTab(4)" id="tab-4" class="border-transparent text-slate-400 whitespace-nowrap py-3 px-6 border-b-2 font-bold text-xs uppercase tracking-widest flex items-center hover:text-slate-800 transition-all">
-                        <span class="mr-2 opacity-50">04.</span> Diseño del Agente
-                    </button>
+                <section class="bg-white p-5 md:p-6 border border-stone-200 shadow-sm mb-8 font-mono">
+                    <h2 class="text-[9px] md:text-[10px] font-bold mb-4 uppercase tracking-widest text-slate-500">Parámetros del Currículo</h2>
+                    <div class="grid md:grid-cols-2 gap-4 md:gap-6">
+                        <input type="text" id="inputAsignatura" placeholder="Asignatura..." class="w-full px-4 py-2 border border-stone-200 text-sm focus:border-emerald-700 outline-none bg-stone-50 md:bg-white">
+                        <input type="text" id="inputGrado" placeholder="Grado..." class="w-full px-4 py-2 border border-stone-200 text-sm focus:border-emerald-700 outline-none bg-stone-50 md:bg-white">
+                    </div>
+                </section>
+
+                <div class="flex border-b border-stone-200 mb-8 overflow-x-auto no-scrollbar mask-linear-right">
+                    <button onclick="switchTab(1)" id="tab-1" class="py-3 px-4 md:px-6 border-b-2 font-bold text-[10px] md:text-xs uppercase tracking-widest border-emerald-700 text-emerald-700 whitespace-nowrap">01. MEN</button>
+                    <button onclick="switchTab(2)" id="tab-2" class="py-3 px-4 md:px-6 border-b-2 font-bold text-[10px] md:text-xs uppercase tracking-widest border-transparent text-slate-400 whitespace-nowrap">02. PRÁCTICAS</button>
+                    <button onclick="switchTab(3)" id="tab-3" class="py-3 px-4 md:px-6 border-b-2 font-bold text-[10px] md:text-xs uppercase tracking-widest border-transparent text-slate-400 whitespace-nowrap">03. TEORÍA</button>
+                    <button onclick="switchTab(4)" id="tab-4" class="py-3 px-4 md:px-6 border-b-2 font-bold text-[10px] md:text-xs uppercase tracking-widest border-transparent text-slate-400 whitespace-nowrap">04. DISEÑO</button>
                 </div>
 
-                <!-- Phase Contents -->
-                <div class="bg-white border border-stone-200 p-8 min-h-[450px]">
-                    <!-- Contenido dinámico por JS -->
-                    <div id="phase-header" class="flex items-start gap-4 mb-8">
-                        <div class="p-2 border border-stone-100 bg-stone-50 rounded">
-                             <i data-lucide="book" id="phase-icon" class="w-5 h-5 text-emerald-700"></i>
-                        </div>
-                        <div>
-                            <h3 id="phase-title" class="text-xl font-bold text-slate-800">Alineación MEN</h3>
-                            <p id="phase-desc" class="text-sm text-slate-500 mt-1 max-w-2xl">Investigación profunda de los referentes del ministerio para actualizar el currículo.</p>
-                        </div>
+                <div class="bg-white border border-stone-200 p-6 md:p-8 min-h-[350px] md:min-h-[400px]">
+                    <div id="phase-header" class="mb-8">
+                        <h3 id="phase-title" class="text-lg md:text-xl font-bold text-slate-800">Cargando...</h3>
+                        <p id="phase-desc" class="text-xs md:text-sm text-slate-500 mt-1"></p>
                     </div>
-
-                    <button onclick="generatePrompt()" class="mb-6 bg-slate-900 text-white px-6 py-3 text-xs font-mono font-bold uppercase tracking-widest hover:bg-emerald-800 transition-all flex items-center shadow-lg">
-                        <i data-lucide="sparkles" class="w-4 h-4 mr-2"></i> Generar Prompt de Fase
-                    </button>
-
-                    <div class="relative group">
-                        <textarea id="prompt-output" readonly class="w-full h-64 p-6 bg-stone-50 border border-stone-200 text-xs font-mono text-slate-700 leading-relaxed focus:outline-none resize-none scroll-smooth" placeholder="El prompt generado aparecerá aquí..."></textarea>
-                        <button onclick="copyPrompt()" class="absolute top-4 right-4 p-2 bg-white border border-stone-200 text-slate-400 hover:text-emerald-700 hover:border-emerald-700 transition-all shadow-sm" title="Copiar prompt">
+                    <button onclick="generatePrompt()" class="w-full md:w-auto mb-6 bg-slate-900 text-white px-6 py-3 text-[10px] font-bold uppercase tracking-widest hover:bg-emerald-800 transition-all shadow-md">Generar Prompt</button>
+                    <div class="relative">
+                        <textarea id="prompt-output" readonly class="w-full h-48 md:h-64 p-4 md:p-6 bg-stone-50 border border-stone-200 text-[10px] md:text-xs font-mono text-slate-700 leading-relaxed outline-none"></textarea>
+                        <button onclick="copyPrompt('m1')" class="absolute top-2 right-2 md:top-4 md:right-4 p-2 bg-white border border-stone-200 text-slate-400 hover:text-emerald-700 transition-all shadow-sm">
                             <i data-lucide="copy" class="w-4 h-4"></i>
                         </button>
                     </div>
                 </div>
             </div>
 
-            <!-- Placeholder for other sessions -->
+            <!-- Lab Content: M2 -->
+            <div id="lab-content-m2" class="hidden">
+                <section class="mb-8 md:mb-12">
+                    <div class="bg-white border border-stone-200 p-6 md:p-12 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-stone-50 border-l border-b border-stone-100 -mr-12 -mt-12 rotate-45"></div>
+                        <div class="relative z-10">
+                            <h3 class="text-[10px] font-mono font-bold text-emerald-700 uppercase tracking-widest mb-4">Arquitectura de Agentes II</h3>
+                            <h4 class="text-xl md:text-2xl font-bold text-slate-900 mb-6 font-bold">Programación Técnica en Gemini Gems</h4>
+                            <p class="text-sm md:text-slate-600 leading-relaxed mb-8">
+                                En esta estación, transformarás el diseño pedagógico de la Sesión I en una estructura de código inyectable. No solo configurarás un chatbot; estarás **programando un generador de documentos técnicos en LaTeX**. Aprende a definir plantillas estéticas inamovibles y a blindar el comportamiento del agente para una salida profesional.
+                            </p>
+                            <div class="grid sm:grid-cols-2 gap-4 md:gap-8 text-xs md:text-sm">
+                                <div class="space-y-3">
+                                    <div class="flex gap-4 items-center">
+                                        <span class="flex-shrink-0 w-6 h-6 rounded-full bg-slate-800 text-white text-[10px] flex items-center justify-center font-bold">1</span>
+                                        <div><p class="font-bold text-slate-800">Definir Estilo (Template)</p></div>
+                                    </div>
+                                    <div class="flex gap-4 items-center">
+                                        <span class="flex-shrink-0 w-6 h-6 rounded-full bg-slate-100 text-slate-900 text-[10px] flex items-center justify-center font-bold border border-stone-200">2</span>
+                                        <div><p class="font-bold text-slate-800">Inyección de Identidad</p></div>
+                                    </div>
+                                </div>
+                                <div class="space-y-3">
+                                    <div class="flex gap-4 items-center">
+                                        <span class="flex-shrink-0 w-6 h-6 rounded-full bg-slate-100 text-slate-900 text-[10px] flex items-center justify-center font-bold border border-stone-200">3</span>
+                                        <div><p class="font-bold text-slate-800">El Implante (Core)</p></div>
+                                    </div>
+                                    <div class="flex gap-4 items-center">
+                                        <span class="flex-shrink-0 w-6 h-6 rounded-full bg-emerald-700 text-white text-[10px] flex items-center justify-center font-bold">4</span>
+                                        <div><p class="font-bold text-slate-800">Optimización de Salida</p></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="bg-white p-5 md:p-6 border border-stone-200 shadow-sm mb-8 font-mono">
+                    <h2 class="text-[9px] md:text-[10px] font-bold mb-4 uppercase tracking-widest text-slate-500">Parámetros de la Gema & Template</h2>
+                    <div class="grid md:grid-cols-3 gap-4 md:gap-6">
+                        <input type="text" id="inputGemName" placeholder="Nombre de la Gema..." class="w-full px-4 py-2 border border-stone-200 text-sm focus:border-emerald-700 outline-none bg-stone-50 md:bg-white">
+                        <select id="inputGemFocus" class="w-full px-4 py-2 border border-stone-200 text-sm focus:border-emerald-700 outline-none bg-stone-50">
+                            <option value="academic">Par Académico</option>
+                            <option value="tutor">Tutor Estudiantil</option>
+                            <option value="auditor">Auditor Curricular</option>
+                        </select>
+                        <select id="inputLatexStyle" class="w-full px-4 py-2 border border-stone-200 text-sm focus:border-emerald-700 outline-none bg-stone-50">
+                            <option value="minimal">Template: Minimalista Moderno</option>
+                            <option value="scientific">Template: Rigor Académico</option>
+                            <option value="workshop">Template: Taller Interactivo</option>
+                        </select>
+                    </div>
+                </section>
+
+                <div class="flex border-b border-stone-200 mb-8 overflow-x-auto no-scrollbar mask-linear-right">
+                    <button onclick="switchTab(1)" id="tab-m2-1" class="py-3 px-4 md:px-6 border-b-2 font-bold text-[10px] md:text-xs uppercase tracking-widest border-emerald-700 text-emerald-700 whitespace-nowrap">01. SETUP</button>
+                    <button onclick="switchTab(2)" id="tab-m2-2" class="py-3 px-4 md:px-6 border-b-2 font-bold text-[10px] md:text-xs uppercase tracking-widest border-transparent text-slate-400 whitespace-nowrap">02. IDENTIDAD</button>
+                    <button onclick="switchTab(3)" id="tab-m2-3" class="py-3 px-4 md:px-6 border-b-2 font-bold text-[10px] md:text-xs uppercase tracking-widest border-transparent text-slate-400 whitespace-nowrap">03. IMPLANTE</button>
+                    <button onclick="switchTab(4)" id="tab-m2-4" class="py-3 px-4 md:px-6 border-b-2 font-bold text-[10px] md:text-xs uppercase tracking-widest border-transparent text-slate-400 whitespace-nowrap">04. OPTIMIZACIÓN</button>
+                </div>
+
+                <div class="bg-white border border-stone-200 p-6 md:p-8 min-h-[350px] md:min-h-[400px]">
+                    <div id="phase-header-m2" class="mb-8">
+                        <h3 id="phase-title-m2" class="text-lg md:text-xl font-bold text-slate-800">Cargando...</h3>
+                        <p id="phase-desc-m2" class="text-xs md:text-sm text-slate-500 mt-1"></p>
+                    </div>
+                    <button onclick="generatePrompt()" class="w-full md:w-auto mb-6 bg-slate-900 text-white px-6 py-3 text-[10px] font-bold uppercase tracking-widest hover:bg-emerald-800 transition-all shadow-md">Generar Instrucción</button>
+                    <div class="relative">
+                        <textarea id="prompt-output-m2" readonly class="w-full h-48 md:h-64 p-4 md:p-6 bg-stone-50 border border-stone-200 text-[10px] md:text-xs font-mono text-slate-700 leading-relaxed outline-none"></textarea>
+                        <button onclick="copyPrompt('m2')" class="absolute top-2 right-2 md:top-4 md:right-4 p-2 bg-white border border-stone-200 text-slate-400 hover:text-emerald-700 transition-all shadow-sm">
+                            <i data-lucide="copy" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                </div>
+            <!-- Lab Content: M3 -->
+            <div id="lab-content-m3" class="hidden">
+                <section class="mb-8 md:mb-12">
+                    <div class="bg-white border border-stone-200 p-6 md:p-12 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-stone-50 border-l border-b border-stone-100 -mr-12 -mt-12 rotate-45"></div>
+                        <div class="relative z-10">
+                            <h3 class="text-[10px] font-mono font-bold text-emerald-700 uppercase tracking-widest mb-4">Manual de Sesión III</h3>
+                            <h4 class="text-xl md:text-2xl font-bold text-slate-900 mb-6 font-bold">Curaduría IA: El Blindaje del Conocimiento</h4>
+                            <p class="text-sm md:text-slate-600 leading-relaxed mb-8">
+                                En esta sesión, transformamos la IA de un "generador de texto" a un **"analista de fuentes"**. Utilizando NotebookLM, aprenderás a blindar tu conocimiento contra alucinaciones, asegurando que cada palabra de tu guía pedagógica esté respaldada por tus propios documentos y la normativa del MEN.
+                            </p>
+                            <div class="grid sm:grid-cols-2 gap-4 md:gap-8 text-xs md:text-sm">
+                                <div class="space-y-3">
+                                    <div class="flex gap-4 items-center">
+                                        <span class="flex-shrink-0 w-6 h-6 rounded-full bg-slate-800 text-white text-[10px] flex items-center justify-center font-bold">1</span>
+                                        <div><p class="font-bold text-slate-800">Cargar Fuentes</p></div>
+                                    </div>
+                                    <div class="flex gap-4 items-center">
+                                        <span class="flex-shrink-0 w-6 h-6 rounded-full bg-slate-100 text-slate-900 text-[10px] flex items-center justify-center font-bold border border-stone-200">2</span>
+                                        <div><p class="font-bold text-slate-800">Grounding Técnico</p></div>
+                                    </div>
+                                </div>
+                                <div class="space-y-3">
+                                    <div class="flex gap-4 items-center">
+                                        <span class="flex-shrink-0 w-6 h-6 rounded-full bg-slate-100 text-slate-900 text-[10px] flex items-center justify-center font-bold border border-stone-200">3</span>
+                                        <div><p class="font-bold text-slate-800">Auditoría de Citas</p></div>
+                                    </div>
+                                    <div class="flex gap-4 items-center">
+                                        <span class="flex-shrink-0 w-6 h-6 rounded-full bg-emerald-700 text-white text-[10px] flex items-center justify-center font-bold">4</span>
+                                        <div><p class="font-bold text-slate-800">Fusión LaTeX</p></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="bg-white p-5 md:p-6 border border-stone-200 shadow-sm mb-8 font-mono">
+                    <h2 class="text-[9px] md:text-[10px] font-bold mb-4 uppercase tracking-widest text-slate-500">Corpus de Conocimiento</h2>
+                    <div class="grid md:grid-cols-2 gap-4 md:gap-6">
+                        <input type="text" id="inputSourceType" placeholder="Tipo de fuente (PDF, Libros, MEN)..." class="w-full px-4 py-2 border border-stone-200 text-sm focus:border-emerald-700 outline-none bg-stone-50 md:bg-white">
+                        <input type="text" id="inputTopicSearch" placeholder="Tema de curaduría..." class="w-full px-4 py-2 border border-stone-200 text-sm focus:border-emerald-700 outline-none bg-stone-50 md:bg-white">
+                    </div>
+                </section>
+
+                <div class="flex border-b border-stone-200 mb-8 overflow-x-auto no-scrollbar mask-linear-right">
+                    <button onclick="switchTab(1)" id="tab-m3-1" class="py-3 px-4 md:px-6 border-b-2 font-bold text-[10px] md:text-xs uppercase tracking-widest border-emerald-700 text-emerald-700 whitespace-nowrap">01. INGESTA</button>
+                    <button onclick="switchTab(2)" id="tab-m3-2" class="py-3 px-4 md:px-6 border-b-2 font-bold text-[10px] md:text-xs uppercase tracking-widest border-transparent text-slate-400 whitespace-nowrap">02. AUDITORÍA</button>
+                    <button onclick="switchTab(3)" id="tab-m3-3" class="py-3 px-4 md:px-6 border-b-2 font-bold text-[10px] md:text-xs uppercase tracking-widest border-transparent text-slate-400 whitespace-nowrap">03. SÍNTESIS</button>
+                    <button onclick="switchTab(4)" id="tab-m3-4" class="py-3 px-4 md:px-6 border-b-2 font-bold text-[10px] md:text-xs uppercase tracking-widest border-transparent text-slate-400 whitespace-nowrap">04. GUIÓN FINAL</button>
+                </div>
+
+                <div class="bg-white border border-stone-200 p-6 md:p-8 min-h-[350px] md:min-h-[400px]">
+                    <div id="phase-header-m3" class="mb-8">
+                        <h3 id="phase-title-m3" class="text-lg md:text-xl font-bold text-slate-800">Cargando...</h3>
+                        <p id="phase-desc-m3" class="text-xs md:text-sm text-slate-500 mt-1"></p>
+                    </div>
+                    <button onclick="generatePrompt()" class="w-full md:w-auto mb-6 bg-slate-900 text-white px-6 py-3 text-[10px] font-bold uppercase tracking-widest hover:bg-emerald-800 transition-all shadow-md">Generar Prompt Auditor</button>
+                    <div class="relative">
+                        <textarea id="prompt-output-m3" readonly class="w-full h-48 md:h-64 p-4 md:p-6 bg-stone-50 border border-stone-200 text-[10px] md:text-xs font-mono text-slate-700 leading-relaxed outline-none"></textarea>
+                        <button onclick="copyPrompt('m3')" class="absolute top-2 right-2 md:top-4 md:right-4 p-2 bg-white border border-stone-200 text-slate-400 hover:text-emerald-700 transition-all shadow-sm">
+                            <i data-lucide="copy" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Placeholder -->
             <div id="lab-placeholder" class="hidden py-32 text-center border border-dashed border-stone-300">
                 <i data-lucide="construction" class="w-12 h-12 text-stone-300 mx-auto mb-4"></i>
-                <h3 class="text-xl font-bold text-stone-400">Laboratorio en Construcción</h3>
-                <p class="text-sm text-stone-400 mt-2">La ingeniería técnica para esta sesión estará disponible pronto.</p>
-                <button onclick="switchView('home')" class="mt-8 text-xs font-mono uppercase text-emerald-700 font-bold border-b border-emerald-700">Volver al Inicio</button>
+                <h3 class="text-xl font-bold text-stone-400 uppercase tracking-widest">Laboratorio en Construcción</h3>
+                <p class="text-sm text-stone-400 mt-2">Disponible en la siguiente fase de capacitación.</p>
+                <button onclick="switchView('home')" class="mt-8 text-[10px] font-bold uppercase text-emerald-700 border-b border-emerald-700 pb-1">Volver al Inicio</button>
             </div>
         </div>
     </main>
 
     <!-- Footer -->
-    <footer class="mt-auto py-12 border-t border-stone-200">
+    <footer class="mt-auto py-12 border-t border-stone-200 bg-white">
         <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
-            <div class="text-[10px] font-mono text-slate-400 uppercase tracking-widest text-left max-w-sm">
-                Una misión de rescate pedagógico impulsada por ecosistemas digitales para la post-media.
-            </div>
-            <div class="text-[10px] font-mono text-slate-500 uppercase tracking-widest">
-                © 2026 PhD. Álvaro Cárdenas Orozco.
-            </div>
+            <div class="text-[10px] font-mono text-slate-400 uppercase tracking-widest max-w-sm">Misión de rescate pedagógico | STEM+ CreaTE</div>
+            <div class="text-[10px] font-mono text-slate-500 uppercase tracking-widest">© 2026 PhD. Álvaro Cárdenas Orozco.</div>
         </div>
     </footer>
 
-    <!-- Notificación Toast -->
-    <div id="toast" class="fixed bottom-8 left-1/2 -translate-x-1/2 bg-slate-900 text-white px-6 py-4 rounded shadow-2xl flex items-center transform transition-all duration-300 translate-y-24 opacity-0 z-[60]">
+    <!-- Mobile Bottom Navigation -->
+    <nav id="mobile-bottom-nav" class="md:hidden fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-lg border-t border-stone-200 z-50 safe-area-bottom">
+        <div class="grid grid-cols-5 h-16">
+            <button onclick="switchView('home')" id="mob-nav-home" class="mob-nav-btn mob-nav-active flex flex-col items-center justify-center gap-0.5 relative">
+                <i data-lucide="home" class="w-5 h-5"></i>
+                <span class="text-[9px] font-mono font-bold uppercase tracking-tight">Inicio</span>
+                <div class="mob-nav-indicator"></div>
+            </button>
+            <button onclick="switchView('s1')" id="mob-nav-s1" class="mob-nav-btn flex flex-col items-center justify-center gap-0.5 relative">
+                <i data-lucide="flask-conical" class="w-5 h-5"></i>
+                <span class="text-[9px] font-mono font-bold uppercase tracking-tight">S. I</span>
+                <div class="mob-nav-indicator"></div>
+            </button>
+            <button onclick="switchView('s2')" id="mob-nav-s2" class="mob-nav-btn flex flex-col items-center justify-center gap-0.5 relative">
+                <i data-lucide="cpu" class="w-5 h-5"></i>
+                <span class="text-[9px] font-mono font-bold uppercase tracking-tight">S. II</span>
+                <div class="mob-nav-indicator"></div>
+            </button>
+            <button onclick="switchView('s3')" id="mob-nav-s3" class="mob-nav-btn flex flex-col items-center justify-center gap-0.5 relative">
+                <i data-lucide="database" class="w-5 h-5"></i>
+                <span class="text-[9px] font-mono font-bold uppercase tracking-tight">S. III</span>
+                <div class="mob-nav-indicator"></div>
+            </button>
+            <button onclick="switchView('s4')" id="mob-nav-s4" class="mob-nav-btn flex flex-col items-center justify-center gap-0.5 relative">
+                <i data-lucide="eye" class="w-5 h-5"></i>
+                <span class="text-[9px] font-mono font-bold uppercase tracking-tight">S. IV</span>
+                <div class="mob-nav-indicator"></div>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-24 md:bottom-8 left-1/2 -translate-x-1/2 bg-slate-900 text-white px-6 py-4 rounded shadow-2xl flex items-center transform transition-all duration-300 translate-y-24 opacity-0 z-[60]">
         <i data-lucide="check" class="w-4 h-4 text-emerald-400 mr-3"></i>
         <span class="text-xs font-mono font-bold uppercase tracking-widest" id="toast-message">Copiado con éxito</span>
     </div>
