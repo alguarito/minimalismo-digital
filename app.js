@@ -49,10 +49,10 @@ const phasesS1 = {
 };
 
 const phasesS2 = {
-    1: { title: "Entorno & Roles", desc: "Configuración de la Gema en Gemini y definición del rol protagónico.", icon: "settings" },
-    2: { title: "Arquitectura LaTeX", desc: "Inyección de la estructura de plantilla y preámbulo técnico elegido.", icon: "layout" },
-    3: { title: "El Implante (Core)", desc: "Traspaso de la lógica pedagógica diseñada en la Sesión I.", icon: "terminal" },
-    4: { title: "Guardrails & Despliegue", desc: "Optimización de instrucciones para garantizar salida pura en LaTeX.", icon: "shield-check" }
+    1: { title: "El Andamiaje de la IA", desc: "Configuración inicial. Le diremos a Gemini quién es, qué va a enseñar y para quién. Establecemos todo el contexto curricular.", icon: "settings" },
+    2: { title: "Plantilla Minimalista", desc: "Prompt para generar una guía elegante, enfocada puramente en el texto y estructura, usando márgenes amplios y tipografía Sans-Serif.", icon: "layout-template" },
+    3: { title: "Plantilla Académico", desc: "Prompt para un documento riguroso. Habilita paquetes matemáticos (amsmath), formato clásico y estructura para artículos o Tesis.", icon: "book-open" },
+    4: { title: "Plantilla Taller Interactivo", desc: "Prompt para guías dinámicas de clase. Usa cajas de color (tcolorbox) para preguntas y deja espacios para respuestas del alumno.", icon: "clipboard-edit" }
 };
 
 const phasesS3 = {
@@ -196,31 +196,86 @@ function generatePrompt() {
         }
         document.getElementById('prompt-output').value = promptText;
     } else if (currentView === 's2') {
-        const gemName = document.getElementById('inputGemName').value.trim() || "Gema Pedagógica";
-        const gemFocus = document.getElementById('inputGemFocus').value;
-        const latexStyle = document.getElementById('inputLatexStyle').value;
-        const template = latexTemplates[latexStyle];
+        const asig = document.getElementById('inputAsignaturaM2')?.value.trim() || "[Asignatura]";
+        const pub = document.getElementById('inputPublicoM2')?.value.trim() || "[Público Objetivo]";
+        const obj = document.getElementById('inputObjetivosM2')?.value.trim() || "[Objetivos de Aprendizaje]";
+        const act = document.getElementById('inputActividadesM2')?.value.trim() || "[Actividades Esperadas]";
+        
+        // Ficha de Transparencia (Gobernanza)
+        const gobernanza = `
+% --- FICHA DE ASISTENCIA IA ---
+% Herramienta utilizada: Gemini 
+% Intervención: < 25% (Alineado a normas de Gobernanza)
+% Causal: Andamiaje Estructural y Compilación LaTeX
+% Tensión Ética: El contenido pedagógico fue diseñado y validado por el docente (${asig} - ${pub}).
+% ------------------------------`;
 
         switch(currentTab) {
-            case 1: promptText = `CONFIGURACIÓN DE GEMA EN GEMINI:
-1. Crea una nueva Gema llamada: "${gemName}".
-2. Identidad: Eres un experto en ${asignatura} para ${grado} con enfoque de ${gemFocus}.
-3. Tono: Profesional, socrático y extremadamente técnico en el uso pedagógico de la IA.`; break;
-            case 2: promptText = `ARQUITECTURA TÉCNICA (LaTeX Template):
-Pega esto en la sección de 'Instrucciones' de tu Gema para definir la estructura documental:
-"REGLA DE FORMATO: Todo documento de salida debe usar el siguiente preámbulo LaTeX obligatorio:
-${template.preamble}
+            case 1: promptText = `Eres un experto diseñador instruccional y un compilador matemático estricto en LaTeX. 
+Misión: Vas a generar el código de una guía pedagógica para ${asig}, pensada para ${pub}. 
+El documento debe lograr los siguientes objetivos: ${obj}.
+Para ello, el diseño instruccional incluirá las siguientes actividades: ${act}.
+
+A continuación (en las siguientes pestañas) te daré la estructura visual estricta (Plantilla LaTeX) que debes usar.
+Recuerda: NO debes usar comillas triples ni texto MD explicativo fuera del código compilable. Todo lo que digas debe estar dentro del bloque \\begin{document}...\\end{document}.`; break;
+            case 2: promptText = `PROMPT PARA GEMINI (ESTILO MINIMALISTA)
+Basado en el contexto curricular (${asig} para ${pub}), genera el código LaTeX completo de la guía y aplica ESTRICTAMENTE esta plantilla:
+
+\\documentclass[11pt]{article}
+\\usepackage[utf8]{inputenc}
+\\usepackage[gray]{xcolor}
+\\usepackage{geometry}
+\\geometry{a4paper, margin=2cm}
+\\usepackage{helvet}
+\\renewcommand{\\familydefault}{\\sfdefault}
+\\usepackage{titlesec}
+\\titleformat{\\section}{\\color{black!80}\\large\\bfseries}{}{0em}{}
+
+${gobernanza}
+
 \\begin{document}
-[Contenido generado por la Gema]
-\\end{document}"`; break;
-            case 3: promptText = `EL IMPLANTE (Core Pedagógico):
-Inyecta la lógica de planeación diseñada en la Sesión I.
-"Tus respuestas deben estar articuladas bajo los referentes normativos del MEN Colombia y el filtro de Minimalismo Digital. Tu misión es transformar conceptos complejos en guías táctiles y arquitectónicas."`; break;
-            case 4: promptText = `GUARDRAILS DE OPERACIÓN:
-Blindaje final para la Gema "${gemName}":
-"PROHIBICIÓN: Jamás respondas con texto plano fuera del bloque de código LaTeX.
-MANDATO: Si el usuario te pide una guía, genera el código completo, compilable y sin explicaciones externas. 
-VERIFICACIÓN: Antes de responder, comprueba que has incluido Objetivo (DBA), Momento de Exploración, Estructuración y Transferencia."`; break;
+[Genera aquí el contenido de la guía sobre ${asig} incluyendo los objetivos (${obj}) y las actividades (${act})]
+
+% NOTA PARA EL DOCENTE: Puedes exportar fragmentos de esto o el documento final y embellecer conceptos clave visualmente con Canva.
+\\end{document}`; break;
+            case 3: promptText = `PROMPT PARA GEMINI (ESTILO RIGOR ACADÉMICO)
+Basado en el contexto curricular (${asig} para ${pub}), genera el código LaTeX completo de la guía rigurosa y aplica ESTRICTAMENTE esta plantilla:
+
+\\documentclass[12pt]{article}
+\\usepackage[utf8]{inputenc}
+\\usepackage{amsmath, amssymb, amsfonts}
+\\usepackage{geometry}
+\\geometry{a4paper, margin=2.5cm}
+\\usepackage{charter}
+\\usepackage{titlesec}
+\\titleformat{\\section}{\\centering\\scshape\\large}{}{0em}{}[\\titlerule]
+
+${gobernanza}
+
+\\begin{document}
+[Genera aquí el contenido científico/matemático sobre ${asig} incluyendo los objetivos (${obj}) y las actividades (${act})]
+\\end{document}`; break;
+            case 4: promptText = `PROMPT PARA GEMINI (ESTILO TALLER INTERACTIVO)
+Basado en el contexto curricular (${asig} para ${pub}), genera el código LaTeX completo con cajas tcolorbox y aplica ESTRICTAMENTE esta plantilla:
+
+\\documentclass[11pt]{article}
+\\usepackage[utf8]{inputenc}
+\\usepackage[most]{tcolorbox}
+\\usepackage{geometry}
+\\geometry{a4paper, margin=1.5cm}
+\\newtcolorbox{pregunta}{colback=gray!5,colframe=gray!80,fonttitle=\\bfseries,title=Actividad Integrada}
+\\newcommand{\\answerbox}[1]{\\vspace{0.5cm}\\hrule\\vspace{#1}}
+
+${gobernanza}
+
+\\begin{document}
+[Genera aquí la introducción de ${asig}]
+
+\\begin{pregunta}
+[Genera basándote en: ${act}]
+\\answerbox{3cm}
+\\end{pregunta}
+\\end{document}`; break;
         }
         document.getElementById('prompt-output-m2').value = promptText;
     } else if (currentView === 's3') {
