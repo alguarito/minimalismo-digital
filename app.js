@@ -42,9 +42,9 @@ const latexTemplates = {
 
 // Metadata for Phases
 const phasesS1 = {
-    1: { title: "Alineación y Mapeo MEN", desc: "Genera un informe curricular completo y estricto desde los estándares del Ministerio, exportable en formato PDF (LaTeX).", icon: "book" },
-    2: { title: "Manual de Prácticas", desc: "Creación de un manual de pedagogía con propuestas medibles y experiencias significativas global/local descargable en PDF.", icon: "globe" },
-    3: { title: "Marco Teórico Integral", desc: "Selección de modelos, filósofos y competencias clave para dar rigor epistemológico a la asignatura, en formato PDF.", icon: "library" },
+    1: { title: "Alineación y Mapeo MEN", desc: "Genera un informe curricular completo y estricto desde los estándares del Ministerio.", icon: "book" },
+    2: { title: "Manual de Prácticas", desc: "Creación de un manual de pedagogía con propuestas medibles y experiencias significativas globales y locales.", icon: "globe" },
+    3: { title: "Marco Teórico Integral", desc: "Selección de modelos, filósofos y competencias clave para dar rigor epistemológico a la asignatura.", icon: "library" },
     4: { title: "Diseño del Agente (LaTeX)", desc: "Síntesis final para estructurar un Agente IA que genere guías en código LaTeX.", icon: "cpu" }
 };
 
@@ -192,37 +192,25 @@ function generatePrompt() {
             case 1: promptText = `Actúa como un analista experto en diseño instruccional y lineamientos del Ministerio de Educación Nacional de Colombia.
 TU MISIÓN: Realizar una búsqueda profunda y reglamentaria para la asignatura de ${asignatura} orientada al grado ${grado}.
 
-ENTREGABLE ESPERADO (INFORME MEN): Redacta un informe completo, formal e íntegro detallando TODOS los saberes, metas, Derechos Básicos de Aprendizaje (DBA), estándares de competencia y ejes temáticos anuales obligatorios. 
-
-REGLAS DE FORMATO (Obligatorio SALIDA LATEX):
-Escribe todo el informe ESTRICTAMENTE en código LaTeX usando una clase estándar como 'article'. 
-INSTRUCCIÓN FINAL: Una vez finalizado el código, utiliza sin falta tu entorno de Python para guardar el archivo .tex y compilarlo usando 'pdflatex'. Para prevenir errores de descarga, empaqueta el PDF y el .tex en un archivo llamado 'informe_MEN.zip' y bríndame el enlace de descarga del ZIP.`; break;
+ENTREGABLE ESPERADO (INFORME MEN): Redacta un informe completo, formal e íntegro en formato de texto claro (Markdown) detallando TODOS los saberes, metas, Derechos Básicos de Aprendizaje (DBA), estándares de competencia y ejes temáticos anuales obligatorios.`; break;
 
             case 2: promptText = `Actúa como investigador de innovación educativa y experto en didáctica. 
 Basándote en los saberes previstos del MEN para ${asignatura} (${grado}), tu misión es realizar un barrido exhaustivo de las MEJORES prácticas pedagógicas mundiales y locales.
 
-ENTREGABLE ESPERADO (MANUAL DE PRÁCTICAS): Desarrolla un manual que contenga:
+ENTREGABLE ESPERADO (MANUAL DE PRÁCTICAS): Desarrolla un manual estructurado en formato de texto (Markdown) que contenga:
 - Experiencias significativas exitosas relevantes a los temas de esta área.
 - Las mejores propuestas MEDIBLES para enseñar estos tópicos.
-- Una guía paso a paso explicando cómo aplicar en el aula cada práctica identificada frente al saber disciplinar.
-
-REGLAS DE FORMATO (Obligatorio SALIDA LATEX):
-Escribe todo el manual ESTRICTAMENTE en código LaTeX (usa clase 'article').
-INSTRUCCIÓN FINAL: Ejecuta Python de forma inmediata tras generar el código fuente para compilar tu documento con 'pdflatex'. Para asegurar que obtenga una extensión funcional, crea un archivo 'manual_practicas.zip' que contenga el PDF compilado y ofrécelo para su descarga.`; break;
+- Una guía paso a paso explicando cómo aplicar en el aula cada práctica identificada frente al saber disciplinar.`; break;
 
             case 3: promptText = `Actúa como epistemólogo y doctor en filosofía de la educación.
 Conecta el currículo base y las metodologías obtenidas de ${asignatura} para grado ${grado} con marcos teóricos profundos para llenarlo de valor humano y cognitivo de clase mundial.
 
-ENTREGABLE ESPERADO (MARCO TEÓRICO INTEGRAL): Un documento estructurado que busque, seleccione y justifique la inclusión obligatoria de:
+ENTREGABLE ESPERADO (MARCO TEÓRICO INTEGRAL): Un documento estructurado en formato de texto (Markdown) que busque, seleccione y justifique la inclusión obligatoria de:
 - Autores, modelos pedagógicos, filósofos y psicólogos que soporten el contenido.
 - Enfoque metodológico en competencias socioemocionales.
 - Integración real de saberes ancestrales (Epistemologías pertinentes).
 - Desarrollo explícito del Pensamiento Crítico.
-- Estrategias de lectura del mundo desde el lente de esta disciplina.
-
-REGLAS DE FORMATO (Obligatorio SALIDA LATEX):
-Redacta íntegramente en código LaTeX. Usa la clase base 'article' sin paquetes extraños.
-INSTRUCCIÓN FINAL: Usa Python incondicionalmente tras redactar todo el tag de cierre de tu código para compilarlo con 'pdflatex'. Comprime el archivo resultante PDF bajo el nombre 'marco_teorico.zip' y proporciónalo para que lo pueda descargar y abrir.`; break;
+- Estrategias de lectura del mundo desde el lente de esta disciplina.`; break;
 
             case 4: promptText = `MODO PROGRAMADOR LATEX: Genera las instrucciones de comportamiento final para un Agente IA que actúe como par académico. REGLA: Todas las guías deben ser en bloques de código LaTeX puro, escala de grises, diseño arquitectónico.`; break;
         }
