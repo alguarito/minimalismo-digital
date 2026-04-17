@@ -218,7 +218,7 @@ Para ello, el diseño instruccional incluirá las siguientes actividades: ${act}
 
 REGLAS DE OPERACIÓN EN GEMINI:
 1. No dejes plantillas vacías ni uses corchetes []. Redacta TODO el contenido teórico y pedagógico completo y extenso.
-2. Utiliza tu entorno de ejecución de código (Python) para guardar el código final en un archivo .tex y compílalo usando 'pdflatex' para generarme el archivo PDF descargable directamente aquí.`; break;
+2. Utiliza tu entorno de ejecución de código (Python) para compilar el código usando 'pdflatex'. Para evitar que el archivo de descarga se rompa y quede sin extensión, comprime el PDF y el código .tex en un archivo llamado 'material_clase.zip' y entrégame el enlace de descarga del ZIP.`; break;
             case 2: promptText = `PROMPT PARA GEMINI (ESTILO MINIMALISTA)
 Basado en el contexto curricular (${asig} para ${pub}), genera el código LaTeX completo de la guía. Aplica ESTRICTAMENTE esta plantilla estándar (no uses paquetes externos para evitar errores de compilación):
 
@@ -236,7 +236,7 @@ ${gobernanza}
 % NOTA PARA EL DOCENTE: Puedes exportar fragmentos de este documento final en PDF para embellecerlos visualmente con Canva.
 \\end{document}
 
-INSTRUCCIÓN FINAL: Una vez escrito el código, usa Python de inmediato para guardarlo en un archivo 'guia_minimalista.tex', compílalo con 'pdflatex' y entrégame el archivo PDF finalizado para descargar.`; break;
+INSTRUCCIÓN FINAL: Una vez escrito el código, usa Python de inmediato para compilarlo con 'pdflatex'. Obligatorio: Para evitar fallos en la extensión del archivo, empaqueta el PDF finalizado en un archivo 'guia_minimalista.zip' y proporciónalo para descargar.`; break;
             case 3: promptText = `PROMPT PARA GEMINI (ESTILO RIGOR ACADÉMICO)
 Basado en el contexto curricular (${asig} para ${pub}), genera el código LaTeX completo de la guía aplicando ESTRICTAMENTE esta plantilla para entornos limitados de LaTeX:
 
@@ -257,7 +257,7 @@ ${gobernanza}
 % Redacta abajo todo el contenido científico y matemático sobre ${asig}, definiendo los postulados necesarios y desarrollando las actividades (${act}) sin dejar espacios o corchetes vacíos.
 \\end{document}
 
-INSTRUCCIÓN FINAL: Finalizada la redacción, utiliza Python para guardar el código en 'g_academica.tex', ejecuta 'pdflatex' en tu entorno y proportioname el botón para descargar el archivo PDF.`; break;
+INSTRUCCIÓN FINAL: Finalizada la redacción, utiliza Python para compilar con 'pdflatex'. Para asegurar que el archivo descargado no quede sin formato, empaqueta el PDF y el .tex en 'guia_academica.zip' y comparte el enlace de descarga del archivo ZIP.`; break;
             case 4: promptText = `PROMPT PARA GEMINI (ESTILO TALLER INTERACTIVO)
 Basado en el contexto curricular (${asig} para ${pub}), genera el código LaTeX de la guía práctica. Utiliza únicamente cajas estándar como \`minipage\` y \`fbox\` para evitar fallos de compilación. Aplica estrictamente este andamiaje:
 
@@ -283,7 +283,7 @@ ${gobernanza}
 }
 \\end{document}
 
-INSTRUCCIÓN FINAL: Guarda este código completo e íntegro haciendo uso de Python en un archivo 'taller.tex', compílalo con pdflatex nativo y ofréceme el enlace directo de descarga en PDF.`; break;
+INSTRUCCIÓN FINAL: Guarda este código en Python y compílalo con pdflatex nativo. CRÍTICO: Para prevenir el error de archivos irreconocibles en la descarga, comprime tu PDF en un archivo 'taller_interactivo.zip' y ofréceme el enlace directo de descarga.`; break;
         }
         document.getElementById('prompt-output-m2').value = promptText;
     } else if (currentView === 's3') {
