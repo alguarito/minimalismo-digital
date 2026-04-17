@@ -153,9 +153,9 @@ function switchTab(index) {
         const btn = document.getElementById(`tab${suffix}-${i}`);
         if (btn) {
             if (i === index) {
-                btn.className = "py-3 px-4 md:px-6 border-b-2 font-bold text-[10px] md:text-xs uppercase tracking-widest border-emerald-700 text-emerald-700 whitespace-nowrap";
+                btn.className = "py-3 px-2 md:px-6 border-b-2 font-bold text-[9px] md:text-xs uppercase tracking-widest border-emerald-700 text-emerald-700 w-full md:w-auto break-words";
             } else {
-                btn.className = "py-3 px-4 md:px-6 border-b-2 font-bold text-[10px] md:text-xs uppercase tracking-widest border-transparent text-slate-400 whitespace-nowrap hover:text-slate-800 transition-all";
+                btn.className = "py-3 px-2 md:px-6 border-b-2 font-bold text-[9px] md:text-xs uppercase tracking-widest border-transparent text-slate-400 hover:text-slate-800 transition-all w-full md:w-auto break-words";
             }
         }
     }
