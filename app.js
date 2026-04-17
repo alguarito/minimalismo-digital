@@ -56,10 +56,10 @@ const phasesS2 = {
 };
 
 const phasesS3 = {
-    1: { title: "Configuración NotebookLM", desc: "Preparación del entorno de curaduría y carga de las fuentes de verdad.", icon: "database" },
-    2: { title: "Auditoría de Fuentes", desc: "Instrucciones para forzar el grounding y evitar alucinaciones en el análisis.", icon: "shield-check" },
-    3: { title: "Síntesis Pedagógica", desc: "Extracción coordinada de conceptos clave alineados con el currículo.", icon: "file-text" },
-    4: { title: "Guión de Salida", desc: "Prompt final para integrar la curaduría auditada en el generador LaTeX.", icon: "terminal" }
+    1: { title: "Configuración del Sistema", desc: "Instrucciones base para que NotebookLM asuma su rol de creador transmedia anclado a tu PDF.", icon: "settings" },
+    2: { title: "Activos Visuales", desc: "Instrucciones unificadas para extraer esquemas de infografía y estructuras jerárquicas para Diapositivas de clase.", icon: "image" },
+    3: { title: "Guión Explicativo (Video)", desc: "Conversión de texto a formato audiovisual cronometrado (Visual / Narración) para plataformas como YouTube o TikTok.", icon: "video" },
+    4: { title: "Formato Sonoro (Podcast)", desc: "Transición del texto a consumo auditivo. Generación de libretos de debate o preparación para Audio Overview.", icon: "mic" }
 };
 
 const phasesS4 = {
@@ -287,13 +287,41 @@ INSTRUCCIÓN FINAL: Guarda este código en Python y compílalo con pdflatex nati
         }
         document.getElementById('prompt-output-m2').value = promptText;
     } else if (currentView === 's3') {
-        const sourceType = document.getElementById('inputSourceType').value.trim() || "PDFs/Fuentes";
-        const topicCur = document.getElementById('inputTopicSearch').value.trim() || "[Tema]";
+        const docente = document.getElementById('inputDocenteM3')?.value.trim() || "[Nombre del Docente]";
+        const inst = document.getElementById('inputInstitucionM3')?.value.trim() || "[Institución Educativa]";
+        const obj = document.getElementById('inputObjetivoM3')?.value.trim() || "[Objetivo Pedagógico]";
+        
         switch(currentTab) {
-            case 1: promptText = `NotebookLM: Sube fuentes de tipo ${sourceType} para el tema ${topicCur}. Configura la libreta de curaduría blindada.`; break;
-            case 2: promptText = `Fact-Check: Analiza las fuentes cargadas. Identifica 3 ideas fuerza y relaciónalas con DBA del MEN. Si no está en el PDF, di 'No disponible'.`; break;
-            case 3: promptText = `Síntesis Curada: Genera un resumen de ${topicCur} citando los documentos fuente. Prepara el contenido para la Gema de la Sesión II.`; break;
-            case 4: promptText = `Prompt de Integración: Toma la síntesis auditada y dile a tu Gema: 'Genera la guía final en LaTeX usando esta información blindada'.`; break;
+            case 1: promptText = `Actúa como mi diseñador instruccional experto, basándote de forma ESTRICTA en la Guía PDF que acabo de cargar en este cuaderno.
+Soy el/la docente ${docente} de la institución ${inst}. El objetivo de aprendizaje de este material es: ${obj}.
+
+A partir de ahora, todo el material, infografías, guiones y resúmenes que te solicite deben estar auditados únicamente contra mi documento. Además, debes adaptar el tono de tus respuestas incluyendo mi firma como autor intelectual del currículo y las menciones a la institución en los recursos generados.`; break;
+
+            case 2: promptText = `Basándote únicamente en el documento maestro cargado y en nuestro perfil (${docente} - ${inst}), extrae y formatea el contenido en dos activos visuales directos para Canva/PowerPoint:
+
+PARTE 1: ESTRUCTURA DE INFOGRAFÍA
+Extrae los 5 conceptos clave. Dame los títulos cortos, viñetas de impacto visual y una metáfora para la estructura de la infografía.
+
+PARTE 2: DIAPOSITIVAS DE CLASE MAGISTRAL
+Arma una presentación de 5 a 10 diapositivas basada en el texto. Para cada una define:
+- Título y Subtítulo.
+- 3 Bullet points.
+- Notas del orador (qué debo decir a los estudiantes sobre el tema).`; break;
+
+            case 3: promptText = `Usa el contenido de mi guía PDF cargada para estructurar un Guion Técnico para un Video Educativo corto (de 3 a 5 minutos) ideal para mis estudiantes.
+
+Estructura requerida:
+1. TÍTULO DEL VIDEO (Llamativo)
+2. GANCHO VISUAL (Los primeros 15 segundos para captar atención)
+3. DESARROLLO (Columna Visual: Describe lo que se muestra en pantalla. Columna Audio: El texto exacto que yo (${docente}) leeré narrado en voz en off para cumplir el objetivo: ${obj}).
+4. CIERRE (Llamado a la acción y actividad sugerida).`; break;
+
+            case 4: promptText = `Transformemos el texto académico de mi documento maestro en un formato de consumo auditivo. 
+Utilizando TODO el conocimiento de la guía cargada (sin alucinar datos externos), escribe un Libreto Completo para un Podcast educativo conversacional a dos voces (Ejemplo: Un experto y un entrevistador).
+
+El tono debe ser coloquial y muy dinámico, pero asegurando el rigor científico. Haz que el debate entre los locutores resuelva el objetivo pedagógico de la sesión: ${obj}.
+
+*(Nota técnica: Si utilizo explícitamente el botón "Audio Overview" de NotebookLM, este prompt servirá como la configuración u orientador del debate en inglés).*`; break;
         }
         document.getElementById('prompt-output-m3').value = promptText;
     }
