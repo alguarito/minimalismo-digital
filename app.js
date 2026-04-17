@@ -212,70 +212,78 @@ function generatePrompt() {
 
         switch(currentTab) {
             case 1: promptText = `Eres un experto diseñador instruccional y un compilador matemático estricto en LaTeX. 
-Misión: Vas a generar el código de una guía pedagógica para ${asig}, pensada para ${pub}. 
+Misión: Vas a generar el código COMPILABLE de una guía pedagógica para ${asig}, pensada para ${pub}. 
 El documento debe lograr los siguientes objetivos: ${obj}.
 Para ello, el diseño instruccional incluirá las siguientes actividades: ${act}.
 
-A continuación (en las siguientes pestañas) te daré la estructura visual estricta (Plantilla LaTeX) que debes usar.
-Recuerda: NO debes usar comillas triples ni texto MD explicativo fuera del código compilable. Todo lo que digas debe estar dentro del bloque \\begin{document}...\\end{document}.`; break;
+REGLAS DE OPERACIÓN EN GEMINI:
+1. No dejes plantillas vacías ni uses corchetes []. Redacta TODO el contenido teórico y pedagógico completo y extenso.
+2. Utiliza tu entorno de ejecución de código (Python) para guardar el código final en un archivo .tex y compílalo usando 'pdflatex' para generarme el archivo PDF descargable directamente aquí.`; break;
             case 2: promptText = `PROMPT PARA GEMINI (ESTILO MINIMALISTA)
-Basado en el contexto curricular (${asig} para ${pub}), genera el código LaTeX completo de la guía y aplica ESTRICTAMENTE esta plantilla:
+Basado en el contexto curricular (${asig} para ${pub}), genera el código LaTeX completo de la guía. Aplica ESTRICTAMENTE esta plantilla estándar (no uses paquetes externos para evitar errores de compilación):
 
 \\documentclass[11pt]{article}
 \\usepackage[utf8]{inputenc}
 \\usepackage[gray]{xcolor}
 \\usepackage{geometry}
 \\geometry{a4paper, margin=2cm}
-\\usepackage{helvet}
-\\renewcommand{\\familydefault}{\\sfdefault}
-\\usepackage{titlesec}
-\\titleformat{\\section}{\\color{black!80}\\large\\bfseries}{}{0em}{}
 
 ${gobernanza}
 
 \\begin{document}
-[Genera aquí el contenido de la guía sobre ${asig} incluyendo los objetivos (${obj}) y las actividades (${act})]
+% Redacta aquí de forma extensa el contenido de la guía teórica sobre ${asig}. Incluye los objetivos (${obj}) y desarrolla a cabalidad las actividades (${act}) sin dejar placeholders vacíos.
 
-% NOTA PARA EL DOCENTE: Puedes exportar fragmentos de esto o el documento final y embellecer conceptos clave visualmente con Canva.
-\\end{document}`; break;
+% NOTA PARA EL DOCENTE: Puedes exportar fragmentos de este documento final en PDF para embellecerlos visualmente con Canva.
+\\end{document}
+
+INSTRUCCIÓN FINAL: Una vez escrito el código, usa Python de inmediato para guardarlo en un archivo 'guia_minimalista.tex', compílalo con 'pdflatex' y entrégame el archivo PDF finalizado para descargar.`; break;
             case 3: promptText = `PROMPT PARA GEMINI (ESTILO RIGOR ACADÉMICO)
-Basado en el contexto curricular (${asig} para ${pub}), genera el código LaTeX completo de la guía rigurosa y aplica ESTRICTAMENTE esta plantilla:
+Basado en el contexto curricular (${asig} para ${pub}), genera el código LaTeX completo de la guía aplicando ESTRICTAMENTE esta plantilla para entornos limitados de LaTeX:
 
 \\documentclass[12pt]{article}
 \\usepackage[utf8]{inputenc}
 \\usepackage{amsmath, amssymb, amsfonts}
 \\usepackage{geometry}
 \\geometry{a4paper, margin=2.5cm}
-\\usepackage{charter}
-\\usepackage{titlesec}
-\\titleformat{\\section}{\\centering\\scshape\\large}{}{0em}{}[\\titlerule]
 
 ${gobernanza}
 
 \\begin{document}
-[Genera aquí el contenido científico/matemático sobre ${asig} incluyendo los objetivos (${obj}) y las actividades (${act})]
-\\end{document}`; break;
+\\begin{center}
+\\LARGE\\textsc{Guía Académica}\\\\[0.4cm]
+\\rule{\\linewidth}{0.4mm}
+\\end{center}
+
+% Redacta abajo todo el contenido científico y matemático sobre ${asig}, definiendo los postulados necesarios y desarrollando las actividades (${act}) sin dejar espacios o corchetes vacíos.
+\\end{document}
+
+INSTRUCCIÓN FINAL: Finalizada la redacción, utiliza Python para guardar el código en 'g_academica.tex', ejecuta 'pdflatex' en tu entorno y proportioname el botón para descargar el archivo PDF.`; break;
             case 4: promptText = `PROMPT PARA GEMINI (ESTILO TALLER INTERACTIVO)
-Basado en el contexto curricular (${asig} para ${pub}), genera el código LaTeX completo con cajas tcolorbox y aplica ESTRICTAMENTE esta plantilla:
+Basado en el contexto curricular (${asig} para ${pub}), genera el código LaTeX de la guía práctica. Utiliza únicamente cajas estándar como \`minipage\` y \`fbox\` para evitar fallos de compilación. Aplica estrictamente este andamiaje:
 
 \\documentclass[11pt]{article}
 \\usepackage[utf8]{inputenc}
-\\usepackage[most]{tcolorbox}
 \\usepackage{geometry}
 \\geometry{a4paper, margin=1.5cm}
-\\newtcolorbox{pregunta}{colback=gray!5,colframe=gray!80,fonttitle=\\bfseries,title=Actividad Integrada}
-\\newcommand{\\answerbox}[1]{\\vspace{0.5cm}\\hrule\\vspace{#1}}
 
 ${gobernanza}
 
 \\begin{document}
-[Genera aquí la introducción de ${asig}]
+% Redacta aquí la introducción conceptual extensa de la temática ${asig}.
 
-\\begin{pregunta}
-[Genera basándote en: ${act}]
-\\answerbox{3cm}
-\\end{pregunta}
-\\end{document}`; break;
+\\vspace{1cm}
+\\noindent\\fbox{%
+\\begin{minipage}{\\linewidth}
+\\textbf{Actividad Práctica Integrada:}
+% Define claramente la actividad basándote en: ${act}
+\\vspace{0.5cm}
+\\hrule
+\\vspace{3cm} % Espacio real para que el alumno responda
+\\end{minipage}
+}
+\\end{document}
+
+INSTRUCCIÓN FINAL: Guarda este código completo e íntegro haciendo uso de Python en un archivo 'taller.tex', compílalo con pdflatex nativo y ofréceme el enlace directo de descarga en PDF.`; break;
         }
         document.getElementById('prompt-output-m2').value = promptText;
     } else if (currentView === 's3') {
