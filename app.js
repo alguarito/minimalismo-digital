@@ -81,6 +81,7 @@ function switchView(viewId) {
     currentView = viewId;
     const viewHome = document.getElementById('view-home');
     const viewSessions = document.getElementById('view-sessions');
+    const viewInspirate = document.getElementById('view-inspirate');
     const labContent1 = document.getElementById('lab-content-m1');
     const labContent2 = document.getElementById('lab-content-m2');
     const labContent3 = document.getElementById('lab-content-m3');
@@ -88,10 +89,12 @@ function switchView(viewId) {
     const labPlaceholder = document.getElementById('lab-placeholder');
 
     // Hide all
-    [viewHome, viewSessions, labContent1, labContent2, labContent3, labContent4, labPlaceholder].forEach(el => el && el.classList.add('hidden'));
+    [viewHome, viewSessions, viewInspirate, labContent1, labContent2, labContent3, labContent4, labPlaceholder].forEach(el => el && el.classList.add('hidden'));
 
     if (viewId === 'home') {
         viewHome.classList.remove('hidden');
+    } else if (viewId === 'inspirate') {
+        viewInspirate.classList.remove('hidden');
     } else {
         viewSessions.classList.remove('hidden');
         currentTab = 1;
@@ -129,7 +132,7 @@ function updateLabHeader(title, icon) {
 }
 
 function updateNavButtons(activeId) {
-    const buttons = ['home', 's1', 's2', 's3', 's4'];
+    const buttons = ['home', 's1', 's2', 's3', 's4', 'inspirate'];
     buttons.forEach(id => {
         // Desktop nav
         const btn = document.getElementById(`nav-btn-${id}`);

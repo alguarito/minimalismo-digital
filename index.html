@@ -52,6 +52,8 @@
                 <button onclick="switchView('s2')" id="nav-btn-s2" class="px-3 py-1 text-xs font-mono uppercase tracking-tighter border-b-2 border-transparent text-slate-500 hover:text-slate-800 transition-all whitespace-nowrap">Sesión II</button>
                 <button onclick="switchView('s3')" id="nav-btn-s3" class="px-3 py-1 text-xs font-mono uppercase tracking-tighter border-b-2 border-transparent text-slate-500 hover:text-slate-800 transition-all whitespace-nowrap">Sesión III</button>
                 <button onclick="switchView('s4')" id="nav-btn-s4" class="px-3 py-1 text-xs font-mono uppercase tracking-tighter border-b-2 border-transparent text-slate-500 hover:text-slate-800 transition-all whitespace-nowrap">Sesión IV</button>
+                <div class="w-px h-3 bg-stone-200 mx-1 flex-shrink-0"></div>
+                <button onclick="switchView('inspirate')" id="nav-btn-inspirate" class="px-3 py-1 text-xs font-mono font-bold uppercase tracking-tighter border-b-2 border-transparent text-amber-600 hover:text-amber-700 transition-all whitespace-nowrap flex items-center gap-1"><i data-lucide="lightbulb" class="w-3 h-3"></i> Inspírate</button>
             </div>
         </div>
     </nav>
@@ -637,6 +639,64 @@
                 <button onclick="switchView('home')" class="mt-8 text-[10px] font-bold uppercase text-emerald-700 border-b border-emerald-700 pb-1">Volver al Inicio</button>
             </div>
         </div>
+
+        <!-- View: Inspirate -->
+        <div id="view-inspirate" class="max-w-6xl mx-auto px-6 py-12 md:py-16 hidden fade-in">
+            <header class="mb-12 border-b border-stone-200 pb-8 text-center md:text-left">
+                <div class="inline-flex items-center justify-center w-12 h-12 bg-amber-50 border border-amber-200 rounded-full mb-6">
+                    <i data-lucide="lightbulb" class="w-6 h-6 text-amber-500"></i>
+                </div>
+                <h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-4 text-slate-800">Galería de <span class="text-amber-500">Inspiración</span></h2>
+                <p class="text-lg text-slate-600 max-w-2xl font-light">Casos de éxito y recursos previos construidos en la comunidad. Usa estos elementos como punto de partida para tus propias creaciones.</p>
+            </header>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                <!-- Example 1 -->
+                <div class="bg-white border border-stone-200 rounded-sm overflow-hidden group hover:border-amber-400 hover:shadow-xl transition-all flex flex-col">
+                    <div class="h-48 bg-slate-50 flex items-center justify-center border-b border-stone-100 relative overflow-hidden">
+                        <i data-lucide="file-text" class="w-16 h-16 text-slate-300 group-hover:scale-110 transition-transform duration-500"></i>
+                        <div class="absolute top-3 left-3 px-2 py-1 bg-white border border-stone-200 text-[9px] font-mono font-bold text-slate-500 uppercase">Módulo 02</div>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <h3 class="text-lg font-bold text-slate-800 mb-2">Guía Minimalista de Física</h3>
+                        <p class="text-xs text-slate-500 leading-relaxed flex-grow">Plantilla académica limpia generada en LaTeX, optimizada para impresiones de bajo costo y máxima legibilidad.</p>
+                        <a href="#" class="mt-6 flex items-center gap-2 text-[10px] font-mono font-bold text-amber-600 uppercase tracking-widest group-hover:text-amber-500">
+                            Ver Documento <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Example 2 -->
+                <div class="bg-white border border-stone-200 rounded-sm overflow-hidden group hover:border-amber-400 hover:shadow-xl transition-all flex flex-col">
+                    <div class="h-48 bg-slate-50 flex items-center justify-center border-b border-stone-100 relative overflow-hidden">
+                        <i data-lucide="headphones" class="w-16 h-16 text-slate-300 group-hover:scale-110 transition-transform duration-500"></i>
+                        <div class="absolute top-3 left-3 px-2 py-1 bg-white border border-stone-200 text-[9px] font-mono font-bold text-slate-500 uppercase">Módulo 03</div>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <h3 class="text-lg font-bold text-slate-800 mb-2">Podcast: Ecosistemas Locales</h3>
+                        <p class="text-xs text-slate-500 leading-relaxed flex-grow">Libreto interactivo a dos voces generado con NotebookLM a partir de una guía estática de Biología.</p>
+                        <a href="#" class="mt-6 flex items-center gap-2 text-[10px] font-mono font-bold text-amber-600 uppercase tracking-widest group-hover:text-amber-500">
+                            Escuchar / Ver Libreto <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Example 3 -->
+                <div class="bg-white border border-stone-200 rounded-sm overflow-hidden group hover:border-amber-400 hover:shadow-xl transition-all flex flex-col">
+                    <div class="h-48 bg-slate-50 flex items-center justify-center border-b border-stone-100 relative overflow-hidden">
+                        <i data-lucide="monitor-play" class="w-16 h-16 text-slate-300 group-hover:scale-110 transition-transform duration-500"></i>
+                        <div class="absolute top-3 left-3 px-2 py-1 bg-white border border-stone-200 text-[9px] font-mono font-bold text-slate-500 uppercase">Módulo 04</div>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <h3 class="text-lg font-bold text-slate-800 mb-2">Simulador: Viaje Celular</h3>
+                        <p class="text-xs text-slate-500 leading-relaxed flex-grow">Juego interactivo de 5 retos programado en un solo archivo HTML, diseñado para estudiantes de grado 6.</p>
+                        <a href="#" class="mt-6 flex items-center gap-2 text-[10px] font-mono font-bold text-amber-600 uppercase tracking-widest group-hover:text-amber-500">
+                            Abrir Simulador <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 
     <!-- Footer -->
@@ -648,8 +708,8 @@
     </footer>
 
     <!-- Mobile Bottom Navigation -->
-    <nav id="mobile-bottom-nav" class="md:hidden fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-lg border-t border-stone-200 z-[100] safe-area-bottom" style="touch-action: manipulation;">
-        <div class="grid grid-cols-5 h-16">
+    <nav id="mobile-bottom-nav" class="md:hidden fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-lg border-t border-stone-200 z-[100] safe-area-bottom overflow-x-auto no-scrollbar" style="touch-action: manipulation;">
+        <div class="grid grid-cols-6 min-w-[320px] h-16">
             <button type="button" onclick="switchView('home')" id="mob-nav-home" class="mob-nav-btn mob-nav-active flex flex-col items-center justify-center gap-0.5 relative" style="touch-action: manipulation;">
                 <i data-lucide="home" class="w-5 h-5" style="pointer-events:none;"></i>
                 <span class="text-[9px] font-mono font-bold uppercase tracking-tight" style="pointer-events:none;">Inicio</span>
@@ -673,6 +733,11 @@
             <button type="button" onclick="switchView('s4')" id="mob-nav-s4" class="mob-nav-btn flex flex-col items-center justify-center gap-0.5 relative" style="touch-action: manipulation;">
                 <i data-lucide="eye" class="w-5 h-5" style="pointer-events:none;"></i>
                 <span class="text-[9px] font-mono font-bold uppercase tracking-tight" style="pointer-events:none;">S. IV</span>
+                <div class="mob-nav-indicator" style="pointer-events:none;"></div>
+            </button>
+            <button type="button" onclick="switchView('inspirate')" id="mob-nav-inspirate" class="mob-nav-btn flex flex-col items-center justify-center gap-0.5 relative" style="touch-action: manipulation;">
+                <i data-lucide="lightbulb" class="w-5 h-5 text-amber-500" style="pointer-events:none;"></i>
+                <span class="text-[9px] font-mono font-bold uppercase tracking-tight text-amber-600" style="pointer-events:none;">Inspira</span>
                 <div class="mob-nav-indicator" style="pointer-events:none;"></div>
             </button>
         </div>
