@@ -95,6 +95,7 @@ function switchView(viewId) {
         viewHome.classList.remove('hidden');
     } else if (viewId === 'inspirate') {
         viewInspirate.classList.remove('hidden');
+        loadCommunityProjects();
     } else {
         viewSessions.classList.remove('hidden');
         currentTab = 1;
@@ -447,6 +448,48 @@ function initializeScrollReveal() {
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 }
 
+// --- Galería Dinámica (Google Sheets Backend) ---
+let communityProjectsLoaded = false;
+
+function generateCardHTML(data) {
+    return `
+        <div class="bg-white border border-stone-200 rounded-sm overflow-hidden group hover:border-amber-400 hover:shadow-xl transition-all flex flex-col fade-in">
+            <div class="h-48 bg-slate-50 flex items-center justify-center border-b border-stone-100 relative overflow-hidden">
+                <i data-lucide="award" class="w-16 h-16 text-amber-300 group-hover:scale-110 transition-transform duration-500"></i>
+                <div class="absolute top-3 left-3 px-2 py-1 bg-amber-100 border border-amber-200 text-[9px] font-mono font-bold text-amber-700 uppercase">Comunidad</div>
+            </div>
+            <div class="p-6 flex-grow flex flex-col">
+                <h3 class="text-lg font-bold text-slate-800 mb-1">Proyecto Docente</h3>
+                <div class="text-[9px] font-mono font-bold text-slate-400 uppercase tracking-widest mb-3">${data.nombre} | ${data.institucion}</div>
+                <p class="text-xs text-slate-600 italic leading-relaxed flex-grow">"${data.resena}"</p>
+                <a href="${data.enlace}" target="_blank" rel="noopener noreferrer" class="mt-6 flex items-center gap-2 text-[10px] font-mono font-bold text-amber-600 uppercase tracking-widest group-hover:text-amber-500">
+                    Abrir Proyecto <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+            </div>
+        </div>
+    `;
+}
+
+async function loadCommunityProjects() {
+    if (communityProjectsLoaded) return;
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwLfbycRa_pXy23_QXLZc2RtzSoZqtpEfLIcWnSl2-hXVuqgH5dMRLjrdBuOCh9aIMnHg/exec';
+    try {
+        const response = await fetch(scriptURL);
+        const result = await response.json();
+        
+        const grid = document.getElementById('inspirate-grid');
+        if (result.status === 'success' && result.data && result.data.length > 0) {
+            result.data.forEach(item => {
+                grid.insertAdjacentHTML('beforeend', generateCardHTML(item));
+            });
+            lucide.createIcons();
+        }
+        communityProjectsLoaded = true;
+    } catch (error) {
+        console.error("Proyectos de la comunidad no pudieron cargarse", error);
+    }
+}
+
 // --- Manejo del Formulario Nativo de Envíos ---
 document.addEventListener('DOMContentLoaded', () => {
     const submissionForm = document.getElementById('submission-form');
@@ -491,6 +534,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     });
                 }
                 
+                // Insertar visualmente la tarjeta nueva
+                const grid = document.getElementById('inspirate-grid');
+                if (grid) {
+                    grid.insertAdjacentHTML('beforeend', generateCardHTML(data));
+                }
+
                 // Mostrar overlay de éxito
                 const overlay = document.getElementById('form-success-overlay');
                 overlay.classList.remove('hidden');
