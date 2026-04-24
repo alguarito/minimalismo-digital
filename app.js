@@ -446,3 +446,69 @@ function initializeScrollReveal() {
     }, { threshold: 0.1 });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 }
+
+// --- Manejo del Formulario Nativo de Envíos ---
+document.addEventListener('DOMContentLoaded', () => {
+    const submissionForm = document.getElementById('submission-form');
+    if (submissionForm) {
+        submissionForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const btn = document.getElementById('btn-submit-form');
+            const originalText = btn.innerHTML;
+            
+            // Estado de carga
+            btn.innerHTML = '<i data-lucide="loader-2" class="w-4 h-4 animate-spin inline-block"></i> <span class="ml-2">Enviando...</span>';
+            btn.classList.add('opacity-80', 'cursor-not-allowed');
+            btn.disabled = true;
+            lucide.createIcons();
+
+            // Recolectar datos
+            const data = {
+                nombre: document.getElementById('entry-name').value,
+                institucion: document.getElementById('entry-institution').value,
+                enlace: document.getElementById('entry-url').value,
+                resena: document.getElementById('entry-review').value,
+                fecha: new Date().toLocaleString()
+            };
+
+            // URL del Google Apps Script (El usuario debe reemplazarla)
+            const scriptURL = 'URL_DEL_SCRIPT'; 
+
+            try {
+                if (scriptURL === 'URL_DEL_SCRIPT') {
+                    // Simulación visual (Para que se vea bonito antes de conectarlo)
+                    await new Promise(r => setTimeout(r, 1500));
+                } else {
+                    // Envío real (usamos no-cors para evitar bloqueos del navegador con Apps Script)
+                    await fetch(scriptURL, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(data)
+                    });
+                }
+                
+                // Mostrar overlay de éxito
+                const overlay = document.getElementById('form-success-overlay');
+                overlay.classList.remove('hidden');
+                // Pequeño timeout para que la transición CSS funcione
+                setTimeout(() => {
+                    overlay.classList.remove('opacity-0');
+                }, 50);
+
+            } catch (error) {
+                console.error('Error al enviar:', error);
+                alert("Hubo un error al enviar tu proyecto. Por favor, revisa tu conexión o intenta de nuevo.");
+            } finally {
+                // Restaurar estado del botón
+                btn.innerHTML = originalText;
+                btn.classList.remove('opacity-80', 'cursor-not-allowed');
+                btn.disabled = false;
+                lucide.createIcons();
+            }
+        });
+    }
+});
