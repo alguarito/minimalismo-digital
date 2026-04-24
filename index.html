@@ -769,6 +769,18 @@
                                 </div>
 
                                 <div>
+                                    <label class="block text-[10px] font-mono font-bold text-slate-500 uppercase tracking-widest mb-1.5">Calificación del Curso</label>
+                                    <div id="star-rating-container" class="flex gap-1 text-slate-300 cursor-pointer mb-2">
+                                        <i data-lucide="star" data-value="1" class="w-6 h-6 star-rating-btn fill-amber-400 text-amber-400 transition-colors"></i>
+                                        <i data-lucide="star" data-value="2" class="w-6 h-6 star-rating-btn fill-amber-400 text-amber-400 transition-colors"></i>
+                                        <i data-lucide="star" data-value="3" class="w-6 h-6 star-rating-btn fill-amber-400 text-amber-400 transition-colors"></i>
+                                        <i data-lucide="star" data-value="4" class="w-6 h-6 star-rating-btn fill-amber-400 text-amber-400 transition-colors"></i>
+                                        <i data-lucide="star" data-value="5" class="w-6 h-6 star-rating-btn fill-amber-400 text-amber-400 transition-colors"></i>
+                                    </div>
+                                    <input type="hidden" id="entry-rating" value="5">
+                                </div>
+
+                                <div>
                                     <label class="block text-[10px] font-mono font-bold text-slate-500 uppercase tracking-widest mb-1.5">Reseña o Comentarios</label>
                                     <textarea id="entry-review" required rows="3" placeholder="¿Cómo te pareció el curso y qué impacto tendrá este recurso en tu clase?" class="w-full bg-slate-50 border border-stone-200 text-slate-800 text-sm px-4 py-3 rounded-sm focus:outline-none focus:border-amber-400 focus:bg-white transition-colors resize-none"></textarea>
                                 </div>

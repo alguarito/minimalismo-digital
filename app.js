@@ -452,6 +452,17 @@ function initializeScrollReveal() {
 let communityProjectsLoaded = false;
 
 function generateCardHTML(data) {
+    const rating = parseInt(data.calificacion) || 5;
+    let starsHTML = '<div class="flex gap-1 text-amber-400 mb-3">';
+    for (let i = 1; i <= 5; i++) {
+        if (i <= rating) {
+            starsHTML += '<i data-lucide="star" class="w-4 h-4 fill-current"></i>';
+        } else {
+            starsHTML += '<i data-lucide="star" class="w-4 h-4 text-slate-300"></i>';
+        }
+    }
+    starsHTML += '</div>';
+
     return `
         <div class="bg-white border border-stone-200 rounded-sm overflow-hidden group hover:border-amber-400 hover:shadow-xl transition-all flex flex-col fade-in">
             <div class="h-48 bg-slate-50 flex items-center justify-center border-b border-stone-100 relative overflow-hidden">
@@ -459,7 +470,7 @@ function generateCardHTML(data) {
                 <div class="absolute top-3 left-3 px-2 py-1 bg-amber-100 border border-amber-200 text-[9px] font-mono font-bold text-amber-700 uppercase">Comunidad</div>
             </div>
             <div class="p-6 flex-grow flex flex-col">
-                <h3 class="text-lg font-bold text-slate-800 mb-1">Proyecto Docente</h3>
+                ${starsHTML}
                 <div class="text-[9px] font-mono font-bold text-slate-400 uppercase tracking-widest mb-3">${data.nombre} | ${data.institucion}</div>
                 <p class="text-xs text-slate-600 italic leading-relaxed flex-grow">"${data.resena}"</p>
                 <a href="${data.enlace}" target="_blank" rel="noopener noreferrer" class="mt-6 flex items-center gap-2 text-[10px] font-mono font-bold text-amber-600 uppercase tracking-widest group-hover:text-amber-500">
@@ -492,6 +503,29 @@ async function loadCommunityProjects() {
 
 // --- Manejo del Formulario Nativo de Envíos ---
 document.addEventListener('DOMContentLoaded', () => {
+    // Interactive Stars Logic
+    const stars = document.querySelectorAll('.star-rating-btn');
+    const ratingInput = document.getElementById('entry-rating');
+    
+    if (stars.length > 0) {
+        stars.forEach(star => {
+            star.addEventListener('click', (e) => {
+                const value = parseInt(e.currentTarget.getAttribute('data-value'));
+                ratingInput.value = value;
+                
+                stars.forEach(s => {
+                    if (parseInt(s.getAttribute('data-value')) <= value) {
+                        s.classList.add('fill-amber-400', 'text-amber-400');
+                        s.classList.remove('text-slate-300');
+                    } else {
+                        s.classList.remove('fill-amber-400', 'text-amber-400');
+                        s.classList.add('text-slate-300');
+                    }
+                });
+            });
+        });
+    }
+
     const submissionForm = document.getElementById('submission-form');
     if (submissionForm) {
         submissionForm.addEventListener('submit', async (e) => {
@@ -512,6 +546,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 institucion: document.getElementById('entry-institution').value,
                 enlace: document.getElementById('entry-url').value,
                 resena: document.getElementById('entry-review').value,
+                calificacion: document.getElementById('entry-rating').value,
                 fecha: new Date().toLocaleString()
             };
 
