@@ -483,7 +483,7 @@ function generateCardHTML(data) {
 
 async function loadCommunityProjects() {
     if (communityProjectsLoaded) return;
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbz4bzvJohf404utv_BH2Bmb4yWRZAVORCqP9-GfX-4xTKBjSLMacvhSdgOrobEWw9EcOA/exec';
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxGyIbcyfYkgNbhgYFHdIt075Cf1Dvr7tDaEYk3rzquT-wZDGzbGctjxcKzJ1uN5CSI1g/exec';
     try {
         const response = await fetch(scriptURL);
         const result = await response.json();
@@ -551,7 +551,7 @@ document.addEventListener('DOMContentLoaded', () => {
             };
 
             // URL del Google Apps Script (El usuario debe reemplazarla)
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbz4bzvJohf404utv_BH2Bmb4yWRZAVORCqP9-GfX-4xTKBjSLMacvhSdgOrobEWw9EcOA/exec'; 
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbxGyIbcyfYkgNbhgYFHdIt075Cf1Dvr7tDaEYk3rzquT-wZDGzbGctjxcKzJ1uN5CSI1g/exec'; 
 
             try {
                 if (scriptURL === 'URL_DEL_SCRIPT') {
