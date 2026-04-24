@@ -552,6 +552,83 @@
                 </div>
             </div>
 
+            <!-- Lab Content: M4 -->
+            <div id="lab-content-m4" class="hidden">
+                <!-- Presentación / Recursos de la Sesión IV -->
+                <section class="mb-8 md:mb-12 grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <a href="#" target="_blank" rel="noopener noreferrer"
+                       class="group bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700 p-6 relative overflow-hidden flex flex-col justify-between hover:shadow-xl hover:shadow-emerald-900/20 transition-all rounded-sm min-h-[160px]">
+                        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-yellow-400 via-transparent to-transparent"></div>
+                        <div>
+                            <div class="text-[9px] font-mono font-bold uppercase tracking-[0.2em] text-yellow-400/80 mb-2">Presentación IV</div>
+                            <h3 class="text-lg font-bold text-white mb-2 leading-tight group-hover:text-yellow-100 transition-colors">Simulaciones a Medida</h3>
+                        </div>
+                        <div class="flex items-center gap-2 text-yellow-400 mt-4">
+                            <i data-lucide="external-link" class="w-4 h-4"></i>
+                            <span class="text-[10px] font-mono font-bold uppercase tracking-widest">Enlace Pendiente</span>
+                        </div>
+                    </a>
+
+                    <div class="bg-white border border-stone-200 p-6 relative overflow-hidden flex flex-col justify-between rounded-sm min-h-[160px]">
+                        <div>
+                            <div class="text-[9px] font-mono font-bold uppercase tracking-[0.2em] text-emerald-700/80 mb-2">Estado del Módulo</div>
+                            <h3 class="text-lg font-bold text-slate-800 mb-2 leading-tight">Generación de Software HTML</h3>
+                            <p class="text-xs text-slate-500 mt-2">Usa la IA como un Desarrollador Frontend experto para crear experiencias interactivas en un solo archivo.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="mb-8 md:mb-12">
+                    <div class="bg-white border border-stone-200 p-6 md:p-12 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-stone-50 border-l border-b border-stone-100 -mr-12 -mt-12 rotate-45"></div>
+                        <div class="relative z-10">
+                            <h3 class="text-[10px] font-mono font-bold text-yellow-700 uppercase tracking-widest mb-4">Manual de Sesión IV</h3>
+                            <h4 class="text-xl md:text-2xl font-bold text-slate-900 mb-6 font-bold">Desarrollo de Experiencias Interactivas</h4>
+                            <p class="text-sm md:text-slate-600 leading-relaxed mb-8">
+                                Transformaremos el contenido teórico en <strong>Simulaciones y Juegos Educativos interactivos</strong>. Configura las variables para generar el código exacto de una aplicación web de 5 niveles totalmente responsiva y lista para usar en el aula, sin necesidad de saber programar.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="bg-white p-5 md:p-6 border border-stone-200 shadow-sm mb-8 font-mono">
+                    <h2 class="text-[9px] md:text-[10px] font-bold mb-4 uppercase tracking-widest text-slate-500">Variables de Software Educativo</h2>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+                        <input type="text" id="inputAsignaturaM4" placeholder="1. Asignatura..." class="w-full px-4 py-2 border border-stone-200 text-sm focus:border-yellow-600 outline-none bg-stone-50 hover:bg-white transition-colors">
+                        <input type="text" id="inputGradoM4" placeholder="2. Grado o Edad..." class="w-full px-4 py-2 border border-stone-200 text-sm focus:border-yellow-600 outline-none bg-stone-50 hover:bg-white transition-colors">
+                        <input type="text" id="inputObjetivoM4" placeholder="3. Objetivo Pedagógico..." class="w-full px-4 py-2 border border-stone-200 text-sm focus:border-yellow-600 outline-none bg-stone-50 hover:bg-white transition-colors">
+                        
+                        <select id="selectTipoM4" class="w-full px-4 py-2 border border-stone-200 text-sm focus:border-yellow-600 outline-none bg-stone-50 hover:bg-white transition-colors cursor-pointer text-slate-600">
+                            <option value="Simulador interactivo">4. Simulador interactivo</option>
+                            <option value="Juego educativo">4. Juego educativo</option>
+                        </select>
+                        <input type="text" id="inputInstitucionM4" placeholder="5. Institución Educativa..." class="w-full px-4 py-2 border border-stone-200 text-sm focus:border-yellow-600 outline-none bg-stone-50 hover:bg-white transition-colors">
+                        <input type="text" id="inputDocenteM4" placeholder="6. Nombre del Docente..." class="w-full px-4 py-2 border border-stone-200 text-sm focus:border-yellow-600 outline-none bg-stone-50 hover:bg-white transition-colors">
+                    </div>
+                </section>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 md:flex border-b border-stone-200 mb-8">
+                    <button onclick="switchTab(1)" id="tab-m4-1" class="py-3 px-2 md:px-6 border-b-2 font-bold text-[9px] md:text-xs uppercase tracking-widest border-emerald-700 text-emerald-700 w-full md:w-auto break-words">01. DISEÑO</button>
+                    <button onclick="switchTab(2)" id="tab-m4-2" class="py-3 px-2 md:px-6 border-b-2 font-bold text-[9px] md:text-xs uppercase tracking-widest border-transparent text-slate-400 hover:text-slate-800 w-full md:w-auto break-words transition-all">02. DESARROLLO WEB</button>
+                    <button onclick="switchTab(3)" id="tab-m4-3" class="py-3 px-2 md:px-6 border-b-2 font-bold text-[9px] md:text-xs uppercase tracking-widest border-transparent text-slate-400 hover:text-slate-800 w-full md:w-auto break-words transition-all">03. EVALUACIÓN</button>
+                    <button onclick="switchTab(4)" id="tab-m4-4" class="py-3 px-2 md:px-6 border-b-2 font-bold text-[9px] md:text-xs uppercase tracking-widest border-transparent text-slate-400 hover:text-slate-800 w-full md:w-auto break-words transition-all">04. EXPANSIÓN</button>
+                </div>
+
+                <div class="bg-white border border-stone-200 p-6 md:p-8 min-h-[350px] md:min-h-[400px]">
+                    <div id="phase-header-m4" class="mb-8">
+                        <h3 id="phase-title-m4" class="text-lg md:text-xl font-bold text-slate-800">Cargando...</h3>
+                        <p id="phase-desc-m4" class="text-xs md:text-sm text-slate-500 mt-1"></p>
+                    </div>
+                    <button onclick="generatePrompt()" class="w-full md:w-auto mb-6 bg-slate-900 text-white px-6 py-3 text-[10px] font-bold uppercase tracking-widest hover:bg-emerald-800 transition-all shadow-md">Generar Prompt</button>
+                    <div class="relative">
+                        <textarea id="prompt-output-m4" readonly class="w-full h-48 md:h-64 p-4 md:p-6 bg-stone-50 border border-stone-200 text-[10px] md:text-xs font-mono text-slate-700 leading-relaxed outline-none focus:bg-white transition-colors"></textarea>
+                        <button onclick="copyPrompt('m4')" class="absolute top-2 right-2 md:top-4 md:right-4 p-2 bg-white border border-stone-200 text-slate-400 hover:text-emerald-700 transition-all shadow-sm">
+                            <i data-lucide="copy" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                </div>
+            </div> <!-- End Lab Content: M4 -->
+            
             <!-- Placeholder -->
             <div id="lab-placeholder" class="hidden py-32 text-center border border-dashed border-stone-300">
                 <i data-lucide="construction" class="w-12 h-12 text-stone-300 mx-auto mb-4"></i>

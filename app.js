@@ -63,10 +63,10 @@ const phasesS3 = {
 };
 
 const phasesS4 = {
-    1: { title: "Sincronización Contextual", desc: "Alineación del ecosistema con el entorno del estudiante.", icon: "refresh-cw" },
-    2: { title: "Estrategias de Ubicuidad", desc: "Diseño de canales de acceso (QR, Enlaces, Mobile).", icon: "smartphone" },
-    3: { title: "Feedback Asincrónico", desc: "Configuración de ciclos de respuesta mediada por IA.", icon: "message-square" },
-    4: { title: "Génesis de la Memoria", desc: "Construcción del portafolio y evidencias del ecosistema.", icon: "album" }
+    1: { title: "Diseño Instruccional", desc: "Estructuración pedagógica de la simulación antes de codificar.", icon: "pen-tool" },
+    2: { title: "Desarrollo (Web App)", desc: "El Super-Prompt generador de código Single-File HTML.", icon: "code" },
+    3: { title: "Rúbrica de Evaluación", desc: "Prompt para crear el método de calificación de los retos.", icon: "check-circle" },
+    4: { title: "Expansión Transmedia", desc: "Conecta la simulación con proyectos del mundo real.", icon: "globe" }
 };
 
 // Initialize
@@ -84,10 +84,11 @@ function switchView(viewId) {
     const labContent1 = document.getElementById('lab-content-m1');
     const labContent2 = document.getElementById('lab-content-m2');
     const labContent3 = document.getElementById('lab-content-m3');
+    const labContent4 = document.getElementById('lab-content-m4');
     const labPlaceholder = document.getElementById('lab-placeholder');
 
     // Hide all
-    [viewHome, viewSessions, labContent1, labContent2, labContent3, labPlaceholder].forEach(el => el && el.classList.add('hidden'));
+    [viewHome, viewSessions, labContent1, labContent2, labContent3, labContent4, labPlaceholder].forEach(el => el && el.classList.add('hidden'));
 
     if (viewId === 'home') {
         viewHome.classList.remove('hidden');
@@ -104,6 +105,9 @@ function switchView(viewId) {
         } else if (viewId === 's3') {
             labContent3.classList.remove('hidden');
             updateLabHeader("Laboratorio M3: Curaduría IA", "database");
+        } else if (viewId === 's4') {
+            labContent4.classList.remove('hidden');
+            updateLabHeader("Laboratorio M4: Ecosistemas Interactivos", "monitor-play");
         } else {
             labPlaceholder.classList.remove('hidden');
             const sessionNum = viewId.replace('s', '');
@@ -148,6 +152,7 @@ function switchTab(index) {
     let suffix = '';
     if (currentView === 's2') suffix = '-m2';
     if (currentView === 's3') suffix = '-m3';
+    if (currentView === 's4') suffix = '-m4';
     
     for (let i = 1; i <= 4; i++) {
         const btn = document.getElementById(`tab${suffix}-${i}`);
@@ -168,6 +173,7 @@ function renderPhase() {
     
     if (currentView === 's2') { suffix = '-m2'; phases = phasesS2; }
     else if (currentView === 's3') { suffix = '-m3'; phases = phasesS3; }
+    else if (currentView === 's4') { suffix = '-m4'; phases = phasesS4; }
     
     const phase = phases[currentTab];
     if (phase) {
@@ -344,6 +350,64 @@ El tono debe ser coloquial y muy dinámico, pero asegurando el rigor científico
 *(Nota técnica: Si utilizo explícitamente el botón "Audio Overview" de NotebookLM, este prompt servirá como la configuración u orientador del debate en inglés).*`; break;
         }
         document.getElementById('prompt-output-m3').value = promptText;
+    } else if (currentView === 's4') {
+        const asig = document.getElementById('inputAsignaturaM4')?.value.trim() || "[Asignatura]";
+        const grado = document.getElementById('inputGradoM4')?.value.trim() || "[Grado/Edad]";
+        const obj = document.getElementById('inputObjetivoM4')?.value.trim() || "[Objetivo de Aprendizaje]";
+        const tipo = document.getElementById('selectTipoM4')?.value.trim() || "Simulador interactivo";
+        const inst = document.getElementById('inputInstitucionM4')?.value.trim() || "[Institución Educativa]";
+        const docente = document.getElementById('inputDocenteM4')?.value.trim() || "[Nombre del Docente]";
+
+        switch(currentTab) {
+            case 1: promptText = `Eres un experto diseñador instruccional y desarrollador de experiencias educativas gamificadas. Tu objetivo es diseñar la estructura pedagógica de un(a) ${tipo}.
+
+PARÁMETROS DEL DOCENTE:
+- Asignatura: ${asig}
+- Grado/Edad: ${grado}
+- Objetivo de Aprendizaje: ${obj}
+- Formato: ${tipo}
+
+INSTRUCCIONES:
+Diseña detalladamente cómo será la experiencia antes de programarla.
+1. Título Creativo de la Actividad.
+2. Contexto Narrativo (Storytelling inmersivo).
+3. Mecánicas y Reglas del ${tipo}.
+4. Los 5 retos progresivos que deberá resolver el estudiante.`; break;
+
+            case 2: promptText = `Actúa como un Desarrollador Web Frontend Experto y Diseñador Instruccional especializado en gamificación educativa. Tu tarea es programar una aplicación web interactiva completa (un(a) ${tipo}) lista para usarse en el aula.
+
+PARÁMETROS DEL DOCENTE:
+- Asignatura: ${asig}
+- Grado / Edad objetivo: ${grado}
+- Objetivo de Aprendizaje: ${obj}
+- Tipo de Actividad: ${tipo}
+- Institución Educativa: ${inst}
+- Nombre del Docente: ${docente}
+
+REQUERIMIENTOS TÉCNICOS:
+1. Arquitectura "Single-File": Genera un ÚNICO archivo HTML que contenga todo. CSS en <style> y JavaScript en <script>. NO uses Node.js ni React.
+2. Responsividad: El diseño debe ser 100% adaptable (Mobile-First) usando Flexbox o CSS Grid.
+3. Interfaz UI/UX: Crea un diseño moderno, intuitivo y temático. Incluye paneles de control, botones y retroalimentación visual.
+4. Firma Institucional: Obligatoriamente, en la pantalla de inicio y pie de página, debe aparecer: "Desarrollado para ${inst} | Docente: ${docente}".
+
+REQUERIMIENTOS PEDAGÓGICOS:
+1. Adaptación Cognitiva: Todo el texto y complejidad debe estar calibrado para estudiantes de ${grado}.
+2. Sistema de 5 Retos (Obligatorio): La aplicación debe tener 5 retos secuenciales para resolver usando el(la) ${tipo}. Superarlos garantiza cumplir: "${obj}".
+3. Feedback Inmediato: Valida las respuestas en cada reto.
+
+FORMATO DE ENTREGA:
+Tu respuesta debe ser EXCLUSIVAMENTE el bloque de código fuente HTML. No incluyas explicaciones. Solo el código listo para copiar, guardar y ejecutar.`; break;
+
+            case 3: promptText = `Actúa como experto en evaluación formativa. Basado en la simulación/juego que acabas de desarrollar para ${asig} (${grado}) orientada al objetivo: ${obj}, necesito que diseñes:
+
+1. Rúbrica de Evaluación Rápida: Tres criterios (Saber, Hacer, Ser) para que el docente pueda observar durante la actividad en el aula.
+2. Preguntas de Metacognición: 3 preguntas abiertas para hacerle a los estudiantes al finalizar la experiencia.`; break;
+
+            case 4: promptText = `Actúa como coordinador de innovación transmedia. ¿Cómo conectamos este(a) ${tipo} de ${asig} con el mundo real para los estudiantes de ${inst}?
+
+Genera 3 ideas de proyectos físicos o actividades análogas donde la web que programaste sirva solo como el punto de partida (o la herramienta central) de una intervención pedagógica que dure varias semanas.`; break;
+        }
+        document.getElementById('prompt-output-m4').value = promptText;
     }
 }
 
@@ -352,6 +416,7 @@ function copyPrompt(type) {
     let id = 'prompt-output';
     if (type === 'm2') id = 'prompt-output-m2';
     if (type === 'm3') id = 'prompt-output-m3';
+    if (type === 'm4') id = 'prompt-output-m4';
     
     const textarea = document.getElementById(id);
     if (!textarea || !textarea.value) return;
