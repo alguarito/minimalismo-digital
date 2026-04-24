@@ -473,7 +473,7 @@ document.addEventListener('DOMContentLoaded', () => {
             };
 
             // URL del Google Apps Script (El usuario debe reemplazarla)
-            const scriptURL = 'URL_DEL_SCRIPT'; 
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbwLfbycRa_pXy23_QXLZc2RtzSoZqtpEfLIcWnSl2-hXVuqgH5dMRLjrdBuOCh9aIMnHg/exec'; 
 
             try {
                 if (scriptURL === 'URL_DEL_SCRIPT') {
