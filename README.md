@@ -2,7 +2,7 @@
 
 **El Plano del Minimalismo Digital** es una Single Page Application (SPA) diseñada como portal educativo y laboratorio técnico para la implementación de Inteligencia Artificial en entornos docentes. 
 
-Desarrollada bajo la dirección del **PhD. Álvaro Cárdenas Orozco**, esta plataforma busca el "Rescate Pedagógico" mediante la reducción del ruido digital y la construcción de infraestructuras invisibles pero potentes para el docente.
+Desarrollada bajo la dirección del **PhD. Alvaro Cardenas Orozco**, esta plataforma busca el "Rescate Pedagógico" mediante la reducción del ruido digital y la construcción de infraestructuras invisibles pero potentes para el docente.
 
 ## 🚀 Características Principales
 
@@ -26,4 +26,4 @@ Desarrollada bajo la dirección del **PhD. Álvaro Cárdenas Orozco**, esta plat
 
 ## 📝 Licencia
 
-© 2026 PhD. Álvaro Cárdenas Orozco. Todos los derechos reservados.
+© 2026 PhD. Alvaro Cardenas Orozco. Todos los derechos reservados.
