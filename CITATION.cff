@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "Si usa este trabajo, cítelo así."
+type: software
+title: "El Plano del Minimalismo Digital"
+abstract: "Laboratorio para planear clases con IA alineadas a los referentes del MEN, usado en la formación docente del CEID Cartago."
+authors:
+  - family-names: "Cardenas Orozco"
+    given-names: "Alvaro"
+    orcid: "https://orcid.org/0000-0003-1820-301X"
+license: MIT
+repository-code: "https://github.com/alguarito/minimalismo-digital"
+url: "https://alguarito.github.io/minimalismo-digital/"

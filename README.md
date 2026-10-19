@@ -27,3 +27,19 @@ Desarrollada bajo la dirección del **PhD. Alvaro Cardenas Orozco**, esta plataf
 ## 📝 Licencia
 
 © 2026 PhD. Alvaro Cardenas Orozco. Todos los derechos reservados.
+
+## Licencia
+
+Código: MIT (`LICENSE`). Contenidos: CC BY-SA 4.0 (`LICENCIA-CONTENIDOS.md`).
+
+## Cómo citar
+
+Cardenas Orozco, A. (2026). *El Plano del Minimalismo Digital* [Software]. https://github.com/alguarito/minimalismo-digital
+
+El archivo `CITATION.cff` trae la cita lista para Zotero, Mendeley y GitHub («Cite this repository»).
+
+## Autor
+
+**Alvaro Cardenas Orozco**, PhD en Ciencias de la Educación e ingeniero de sistemas · [alvarocardenasorozco.com](https://alvarocardenasorozco.com) · ORCID [0000-0003-1820-301X](https://orcid.org/0000-0003-1820-301X)
+
+¿Quiere algo así para su institución? Vea el [programa de IA con criterio](https://alvarocardenasorozco.com/formacion-docente-ia.html) o [agende un diagnóstico gratuito de 30 minutos](https://calendly.com/alvaro-cardenas-orozco/diagnostico-institucional-30-min).
